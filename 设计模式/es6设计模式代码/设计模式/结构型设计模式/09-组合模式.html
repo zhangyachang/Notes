@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="box">1</div>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+<script>
+    // 操作单个元素和多个元素提供统一的接口 使用起来非常方便  类似于jQuery的改变dom样式
+
+    // 抽象工厂模式  规避错误的 你必须要有我提供的这些类，没有的话我就给你报错
+
+
+
+    let $ = function (selector) {
+        var a$ = [...document.querySelectorAll(selector)];
+        return {
+            each (fn) {
+                a$.forEach((item) => {
+                    fn.call(item);
+                })
+            },
+            css (attr, value) {
+                this.each(function () {
+                    this.style[attr] = value;
+                })
+            }
+        }
+    };
+
+    $('#box').css('color', 'red');
+    $('p').css('color', 'green');
+
+
+
+
+</script>
+
+</body>
+</html>

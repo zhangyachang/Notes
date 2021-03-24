@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #btn{
+            width: 100px;
+            height: 40px;
+            margin: 10px auto;
+
+        }
+    </style>
+    <title>Title</title>
+</head>
+<body>
+
+    <button id="btn">按钮</button>
+
+<script>
+
+    /*
+        状态机
+        用对象的映射代替了判断
+    */
+
+    var oBtn = document.getElementById('btn');
+    let state = 'off';
+    function switchFn () {
+        switch (state) {
+            case 'off':
+                state = 'on';
+                console.log('当前的状态是off，执行完相关代码之后，变为on状态');
+                break;
+            case 'on':
+                state = 'goudan';
+                console.log('当前的状态是on，执行完相关代码之后，变为goudan状态');
+                break;
+            case 'goudan':
+                state = 'on';
+                console.log('当前状态是goudan，执行相关代码之后，改变为on状态')
+        }
+    }
+
+
+    oBtn.onclick = switchFn;
+
+
+
+
+
+</script>
+</body>
+</html>

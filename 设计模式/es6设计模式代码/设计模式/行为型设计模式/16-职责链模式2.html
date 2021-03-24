@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    // 下面的函数和函数之间还具有耦合性
+    // 部门
+    function bumen(value) {
+        if(value < 10000){
+            console.log('部门负责人处理');
+        }else{
+            return 'next';
+        }
+    }
+
+    function yuan(value) {
+        if(value <= 50000){
+            console.log('院负责人来处理');
+        }else{
+            return 'next';
+        }
+    }
+
+    function qun(value) {
+        if(value < 100000){
+            console.log('群负责人来处理');
+        }else{
+            return 'next';
+        }
+    }
+    function goudan(value) {
+        if(value < 80000){
+            console.log('狗蛋来处理');
+        }else{
+            return 'next';
+        }
+    }
+
+    function CEO(value) {
+        if(value >= 100000){
+            console.log('董事长来处理');
+        }else {
+            console.log('不处理');
+        }
+    }
+
+    let Chain = class {
+        constructor (...rest) {
+            this.successsor = rest;
+            this.length = rest.length;
+        }
+        request (value) {
+            (function x(index) {
+                let res = this.successsor[index](value);
+                if(res === 'next'){
+                    x.call(this,++index);
+                }
+                return res;
+            }).call(this, 0);
+        }
+    };
+
+    let req = new Chain(
+        bumen,
+        yuan,
+        goudan,
+        qun,
+        CEO
+    );
+
+    req.request(100);
+    req.request(10000);
+    req.request(40000);
+    req.request(50001);
+    req.request(100000);
+
+
+
+
+</script>
+</body>
+</html>

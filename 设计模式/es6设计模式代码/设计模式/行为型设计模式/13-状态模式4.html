@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #btn{
+            width: 100px;
+            height: 40px;
+            margin: 10px auto;
+
+        }
+    </style>
+</head>
+<body>
+<button id="btn">按钮</button>
+<script>
+
+
+
+    let Switch = {
+        // 所有的状态
+        FSM: {
+            on: {
+                to: 'off',
+                action () {
+                    console.log('on 状态应该执行的代码');
+                }
+            },
+            off: {
+                to: 'goudan',
+                action () {
+                    console.log('off 状态应该执行的代码');
+
+                }
+            },
+            goudan: {
+                to: 'on',
+                action () {
+                    console.log('goudan 状态应该执行的代码');
+                }
+            }
+        },
+
+        currentState: 'off',
+        preCurrentState: '',
+
+        init () {
+            let oBtn = document.getElementById('btn');
+            let This = this;
+            oBtn.onclick = function () {
+                This.FSM[This.currentState].action(); // 执行当前状态的代码
+                This.currentState = This.FSM[This.currentState].to; // 改变状态
+            }
+        }
+    };
+
+
+    Switch.init();
+
+
+
+
+
+
+</script>
+</body>
+</html>

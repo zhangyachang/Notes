@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+/*
+    function Strategy(sty, price) {
+        let x = 0;
+        switch (sty) {
+            case 'a':
+                x = price * 0.8;
+                break;
+            case 'b':
+                x = price * 0.85;
+                break;
+            case 'c':
+                x = price - Math.floor(price/1000)*110;
+                break;
+            case 'd':
+                x = price - Math.floor(price/100)*8;
+                break;
+            case 'e':
+                x = price;
+                break;
+        }
+        return x;
+    }
+    */
+
+    let Strategy = function() {
+        let s = {
+            a: function (price) {
+                return price * 0.8;
+            },
+            b: function (price) {
+                return price * 0.85;
+            },
+            c: function (price) {
+                console.log('执行了吗');
+
+                return price - Math.floor(price/1000)*110;
+            },
+            d: function (price) {
+                return price - Math.floor(price/100)*8;
+            },
+            e: function (price) {
+                return price;
+            }
+        };
+        return function (sty, price) {
+            return s[sty] && s[sty](price);
+        }
+    }();
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

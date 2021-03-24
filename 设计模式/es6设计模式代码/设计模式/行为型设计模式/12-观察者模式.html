@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 观察者模式
+    // 一对多的关系
+
+    let Observer = class {
+        constructor () {
+            this.QUEUE = [];
+        }
+        // 订阅
+        subscribe (subFn) {
+            console.log('订阅成功');
+            this.QUEUE.push(subFn);
+        }
+
+        // 发布
+        publish () {
+            this.QUEUE.forEach(item => {
+                item();
+            });
+        }
+    };
+
+    let observer = new Observer();
+    observer.subscribe(function () {
+        console.log('狗蛋: 小贼开播了，快去观看吧');
+    });
+    observer.subscribe(function () {
+        console.log('小花: 贼哥开播了，我要马上去观看');
+    });
+    observer.subscribe(function () {
+        console.log('小狗: 贼哥开播了，我要马上去观看');
+    });
+
+
+    document.onclick = function () {
+        // 发布 开播
+        observer.publish();
+    };
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

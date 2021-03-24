@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+/*
+    let Popup = document.createElement('div');
+    Popup.show = function (msg) {
+        this.innerText = msg;
+        document.body.appendChild(this);
+    };
+    Popup.show('狗蛋');
+    Popup.show('爱给');
+*/
+/*
+
+    let Popup = (function () {
+        let ins = null;
+        return function () {
+            if(!ins) {
+                ins = document.createElement('div');
+            }
+            ins.show = function (msg) {
+                this.innerText = msg;
+                document.body.appendChild(this);
+            };
+            return ins;
+        }
+
+    })();
+
+    Popup().show('这个1');
+    console.log(Popup() === Popup());
+*/
+
+
+
+
+ /*   let Popup = (function () {
+        let ins = null;
+        return class {
+            constructor () {
+                if(ins){
+                    return ins;
+                }
+                this.dom = document.createElement('div');
+                this.show = function (msg) {
+                    this.dom.innerText = msg;
+                    document.body.appendChild(this.dom)
+                };
+                ins = this;
+                return ins;
+            }
+
+        }
+    })();*/
+
+
+
+/*
+    //核心实现代码
+    let Single = (function(){
+        let instance = null;
+        return class S{
+            constructor(){
+                if(instance){
+                    return instance;
+                }
+                instance = this;
+                //code……
+            }
+        }
+    })();
+    //实例化测试
+    console.log( new Single() === new Single() );
+*/
+
+
+</script>
+</body>
+</html>

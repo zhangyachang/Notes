@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    // 内部迭代
+    Array.prototype.forEach = Array.prototype.forEach || function (callback) {
+        var len = this.length;
+        for(var i=0;i<len;i++){
+            callback(this[i], i, this);
+        }
+    }
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

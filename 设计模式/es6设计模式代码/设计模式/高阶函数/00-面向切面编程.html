@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    Function.prototype.before = function (beforeFn) {
+        let This = this;
+        return function () {
+            beforeFn.apply(arguments);
+            return This.apply(this, arguments);
+        }
+    };
+
+    Function.prototype.after = function (afterFn) {
+        let This = this;
+        return function () {
+            let res = This.apply(this, arguments);
+            afterFn();
+            return res;
+        }
+    };
+
+
+
+    function goudan(x, y) {
+        console.log(`goudan函数执行 ${x} ${y}`);
+    }
+
+    goudan = goudan.before(function () {
+        console.log('狗蛋执行前')
+    }).before(function () {
+        console.log('狗蛋更之前');
+    });
+
+    goudan(1,2);
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        canvas{
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="canvas" width="300" height="300"></canvas>
+<canvas id="canvas2" width="300" height="300"></canvas>
+
+
+<script>
+
+    const CanvasCmd = (function () {
+        let CMDList = {
+            beginPath () {
+                this.beginPath();
+            },
+            closePath () {
+                this.closePath();
+            },
+            strokeStyle (color) {
+                this.strokeStyle = color;
+            },
+            moveTo (x, y) {
+                this.moveTo(x, y);
+            },
+            lineTo (x, y) {
+                this.lineTo(x, y);
+            },
+            stroke () {
+                this.stroke();
+            },
+            goudan (x1, y1, x2, y2, x3, y3) {
+                this.beginPath();
+                this.moveTo(x1,y1);
+                this.lineTo(x2, y2);
+                this.lineTo(x3, y3);
+                this.closePath();
+                this.stroke();
+            }
+        };
+
+        function f() {
+            console.log('执行了吗');
+        }
+
+        const C = class {
+            constructor (id) {
+                this.canvas = document.getElementById(id);
+                this.ctx = this.canvas.getContext('2d');
+            }
+            execute (data) {
+                data.forEach(item => {
+                    let {command, params =[]} = item;
+                    this.CMDList && this.CMDList[command] &&   this.CMDList[command].call(this.ctx,...params) ||
+                    CMDList[command] && CMDList[command].call(this.ctx,...params);
+                })
+            }
+            addCom (name, comFn) {
+                if(!this.CMDList){
+                    this.CMDList = {};
+                }
+                this.CMDList[name] = comFn;
+            }
+            removeCom (name){
+                Reflect.deleteProperty(this.CMDList, name);
+            }
+        };
+        C.addCom = function (name, eFn) {
+            CMDList[name] = eFn;
+        };
+        C.removeCom = function (name) {
+            Reflect.deleteProperty(CMDList, name);
+        };
+
+        return C;
+    })();
+
+
+    let canvas1 = new CanvasCmd('canvas');
+    let canvas2 = new CanvasCmd('canvas2');
+
+    CanvasCmd.addCom('fillReact', function (x1, y1, x2, y2, color='pink') {
+        console.log('我执行了吗');
+        this.beginPath();
+        this.fillStyle = color;
+        this.fillRect(x1, y1, x2, y2);
+        this.fill();
+    });
+
+    // CanvasCmd.removeCom('fillReact');
+
+
+    canvas1.execute([
+        {command: 'beginPath'},
+        {command: 'strokeStyle', params: ['red']},
+        {command: 'moveTo', params: [100, 100]},
+        {command: 'lineTo', params: [200, 200]},
+        {command: 'lineTo', params: [200, 50]},
+        {command: 'lineTo', params: 'red'},
+        {command: 'closePath'},
+        {command: 'stroke'},
+        {command: 'goudan', params: [30, 30, 40, 40, 100, 20]},
+        {command: 'fillReact', params: [100, 100, 200, 200, 'red']},
+    ]);
+    canvas2.execute([
+        {command: 'beginPath'},
+        {command: 'strokeStyle', params: ['red']},
+        {command: 'moveTo', params: [100, 100]},
+        {command: 'lineTo', params: [200, 200]},
+        {command: 'lineTo', params: [200, 50]},
+        {command: 'lineTo', params: 'red'},
+        {command: 'closePath'},
+        {command: 'stroke'},
+        {command: 'goudan', params: [30, 30, 40, 40, 100, 20]},
+        {command: 'fillReact', params: [100, 100, 200, 200, 'red']}
+    ]);
+
+
+
+
+
+</script>
+</body>
+</html>

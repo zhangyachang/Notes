@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="box"></div>
+<script>
+
+
+/*
+    解释器模式
+        定义一种文法表示，并定义一种解释器，通过这个解释器来解析对应文法的内容
+        1. 比如 jQuery的  $('p span:odd');
+        2. 自己手动生成一种模板  div>p*2>span*3 生成dom元素
+*/
+
+
+
+
+
+
+
+
+    let interpreter = (function () {
+        function createDOM(domArr) {
+            let oFrag = document.createDocumentFragment();
+            let thisArr = domArr.shift();
+            thisArr.forEach(item => {
+                let dom = document.createElement(item);
+                if(domArr.length){
+                    dom.appendChild( createDOM([...domArr]) )
+                }
+                oFrag.appendChild(dom);
+
+            });
+            return oFrag;
+        }
+        return function(select, dom) {
+            let domArr = [];
+            dom.split('>').forEach(item => {
+                let dom = item.split('*');
+                if(dom.length === 2){
+                    let num = dom[1];
+                    dom.splice(1, 1);
+                    for(let i=1;i<num;i++){
+                        dom.push(dom[0]);
+                    }
+                }
+                domArr.push(dom);
+            });
+
+            // 调用createDOM函数
+            return createDOM(domArr);
+        }
+    })();
+
+
+
+    console.log(interpreter('#box', 'div>p*2>span*3'));
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

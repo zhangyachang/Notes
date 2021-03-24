@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 单例模式
+    /*
+        当需求实例唯一、命名空间，就可以使用单例模式。结合闭包特性，用途广泛
+    */
+
+    /*
+        function Goudan() {
+
+        }
+        let a = new Goudan();
+        let b = new Goudan();
+        console.log(a === b);
+    */
+
+
+    /*
+        var single = (function () {
+
+            let NUM = 10;
+            return {
+                aa: function () {
+                    return NUM++;
+                },
+                bb () {
+                    return NUM--;
+                }
+            }
+        })();
+        console.log(single.aa());
+     */
+
+    /*
+
+        // 惰性单例
+        var ins = null;
+
+        var Single = function (name, age) {
+
+            if(!ins){
+                this.name = name;
+                this.age = age;
+                ins = this;
+            }
+            return ins;
+        };
+
+        let a = new Single('aa', 12);
+        let b = new Single();
+        console.log(a === b);
+    */
+
+    /*
+        var Single = (function () {
+            let ins = null;
+            return function (name, age) {
+                if(!ins){
+                    this.name = name;
+                    this.age = age;
+                    ins = this;
+                }
+                return ins;
+            }
+        })();
+
+        let a = new Single;
+        let b = new Single;
+        console.log(a === b);
+    */
+
+    /*
+        var Single = (function () {
+
+            let ins = null;
+
+            return class {
+                constructor (name, age){
+                    if(!ins){
+                        //……
+                        ins = this;
+                    }
+                    return ins;
+                }
+            }
+        })();
+    */
+
+
+
+    var ZY = {
+        name: '狗蛋',
+        get: function () {
+
+        },
+        set: function () {
+
+        }
+    }
+
+
+
+
+</script>
+</body>
+</html>

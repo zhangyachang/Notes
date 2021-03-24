@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    class Player {
+        constructor (name, team) {
+            this.name = name;
+            this.team = team;
+            this.isLive = true;
+            mediator.addPlayer(this);
+        }
+
+        // 赢了
+        win(){
+            console.log(`${this.name}赢了`);
+        }
+
+        // 输了
+        lose(){
+            console.log(`${this.name}输了`);
+        }
+
+        // 玩家死亡
+        die () {
+            // 该玩家死亡
+            this.isLive = false;
+            console.log(`${this.name}死亡`);
+            mediator.diePlayer(this);
+        }
+
+        // 退出游戏
+        exit() {
+            console.log(`${this.name}退出游戏`);
+            mediator.exitPlayer(this);
+        }
+    }
+
+
+    let mediator = (function () {
+        const allPlayers = {};
+        /**
+         *  保存玩家格式
+         *      {
+         *          red:[],
+         *          blue: []
+         *      }
+         */
+        return {
+
+            // 查看所有的玩家
+            viewPlayers () {
+                return allPlayers;
+            },
+
+            // 添加新的玩家
+            addPlayer (player) {
+                let team = player.team;
+                if(!allPlayers[team]){
+                    allPlayers[team] = [];
+                }
+                allPlayers[team].push(player);
+            },
+
+            // 玩家死亡
+            diePlayer (player) {
+                this.checkGameOver(player);
+            },
+
+            // 玩家退出
+            exitPlayer (player) {
+                let index = allPlayers[player.team].indexOf(player);
+                allPlayers[player.team].splice(index, 1);
+                this.checkGameOver(player);
+            },
+
+            checkGameOver (player) {
+                let allDie = true;
+                let playTeam = player.team;
+                const liveTeam = [];
+                for(let i=0,len=allPlayers[playTeam].length; i<len; i++){
+                    if(allPlayers[playTeam][i].isLive){
+                        allDie = false;
+                        break;
+                    }
+                }
+                if(!allDie){
+                    return ;
+                }
+
+                if(allDie){
+                    // 这个队伍死完了
+                    allPlayers[playTeam].isAllDie = true;
+
+                    // 检测其余队伍的存活情况 如果只剩下一个队伍 那么就胜利了
+                    for(let key of Object.keys(allPlayers)){
+                        if(allPlayers[key].isAllDie){
+
+                        }else{
+                            // 还没有死完的队伍
+                            liveTeam.push(key);
+                        }
+                    }
+                    if(liveTeam.length === 1){
+                        // 输的队伍
+                        for (let key of Object.keys(allPlayers)){
+                            if(allPlayers[key].isAllDie){
+                                // 如果队伍死完了
+                                allPlayers[key].forEach(item => {
+                                    item.lose();
+                                })
+                            }else{
+                                allPlayers[key].forEach(item => {
+                                    item.win();
+                                })
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    })();
+
+
+    let player1 = new Player('player1', 'red');
+    let player2 = new Player('player2', 'red');
+    let player3 = new Player('player3', 'red');
+    let player4 = new Player('player4', 'red');
+    let player5 = new Player('player5', 'red');
+    let player6 = new Player('player6', 'blue');
+    let player7 = new Player('player7', 'blue');
+    let player8 = new Player('player8', 'blue');
+    let player9 = new Player('player9', 'blue');
+    let player10 = new Player('player10', 'blue');
+    let player11 = new Player('player11', 'yellow');
+    let player12 = new Player('player12', 'black');
+
+    console.log(player1);
+    console.log(player2);
+    console.log(player3);
+
+
+    document.onclick = function () {
+        console.log(mediator.viewPlayers());
+    };
+
+
+
+    player2.die();
+    player4.die();
+    player3.die();
+    player5.die();
+    player11.die();
+
+    player1.exit();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

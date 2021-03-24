@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function bumen(value) {
+        if(value < 10000){
+            console.log('部门负责人处理');
+        }else{
+            yuan(value);
+        }
+    }
+
+    function yuan(value) {
+        if(value <= 50000){
+            console.log('院负责人来处理');
+        }else{
+            qun(value);
+        }
+    }
+
+    function qun(value) {
+        if(value < 100000){
+            console.log('群负责人来处理');
+        }else{
+            goudan(value);
+        }
+    }
+    function goudan(value) {
+        if(value < 80000){
+            console.log('狗蛋来处理');
+        }else{
+            CEO(value);
+        }
+    }
+
+    function CEO(value) {
+        if(value >= 100000){
+            console.log('董事长来处理');
+        }else {
+            console.log('不处理');
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

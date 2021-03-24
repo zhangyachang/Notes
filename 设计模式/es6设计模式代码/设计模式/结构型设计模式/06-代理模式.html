@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 代理模式 为对象提供一个代理，用来控制这个对象的访问
+    let proxy = (function () {
+        let WULA = {
+            name: '狗蛋',
+            age: 18,
+            sex: '女',
+            marry: '未婚'
+        };
+        return function (id) {
+            let handler = null;
+            if(id == '100'){
+                handler = {
+                    get (obj, key) {
+                        if(obj[key]){
+                            return obj[key]
+                        }else{
+                            return new Text('您输入的参数错误');
+                        }
+                    },
+                    set () {
+                        throw new Error('你还想修改我？');
+                    }
+                }
+            }else{
+                handler = {
+                    get (obj, key) {
+                        return new Text('你还想拿到我的信息？');
+                    },
+                    set (obj, key) {
+                        return '拿不了拿不了！！';
+                    }
+                }
+            }
+
+            return new Proxy(WULA, handler);
+        }
+
+    })();
+
+
+    let person1 = proxy(100);
+    let person2 = proxy(200);
+    console.log(person1.name = 100);
+    console.log(person1.name);
+
+    console.log(person1.sex);
+
+
+</script>
+</body>
+</html>

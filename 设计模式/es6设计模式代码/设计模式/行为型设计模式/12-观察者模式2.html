@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    function fn() {
+        console.log('执行第一个')
+    }
+
+    function fn2() {
+        console.log('执行第二个')
+    }
+
+    document.onclick = function () {
+        fn();
+        fn2();
+        // 如果点击的时候要执行100个 就要在这里也要写所有的订阅者 ，然后让他们执行，特别麻烦 还需要在这里找到是谁要发布
+
+    }
+
+
+</script>
+</body>
+</html>

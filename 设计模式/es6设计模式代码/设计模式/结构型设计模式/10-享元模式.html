@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+/*
+    享元模式 通过共享大量细粒度的对象，规避具有相同内容造成额外的开销
+        也就是说享元模式是一种代码优化策略，再浅显点的解释就是：相同的部分提出来或者采用其他形式优化掉
+
+    享元模式就是我们把封装的概念运用的更高级点，同时一般需要单例模式来配合
+    要实现享元大多都要借助单例模式
+
+     1. 好多事件函数都一样可以把事件单独提出来
+     2. 事件委托
+*/
+
+
+
+
+    let classInfo = (function () {
+        let ins = {};
+        class Teacher {
+            constructor (tId, tName, tSex) {
+                if(ins[tId]){
+                    return ins[tId];
+                }
+                this.tId = tId;
+                this.tName = tName;
+                this.tSex = tSex;
+                ins[tId] = this;
+            }
+            getInfo () {
+                return `工号：${this.tId}的${this.tName}老师，TA是一位厉害的${this.tSex}老师哦！";`;
+            }
+
+        }
+        return class {
+            constructor (cId, cTime, tId, tName, tSex) {
+                this.time = cTime;
+                this.cId = cId;
+                this.teacher = new Teacher(tId, tName, tSex);
+            }
+            getInfo () {
+                console.log(`${this.time}` + this.teacher.getInfo());
+            }
+            getIns () {
+                return ins;
+            }
+        }
+    })();
+
+
+
+
+
+
+    let t001 = new classInfo('001', '6:20', '100', '狗蛋1', '男');
+    let t002 = new classInfo('002', '7:00', '101', '狗蛋2', '女');
+    let t003 = new classInfo('003', '7:20', '102', '狗蛋3', '女');
+    let t004 = new classInfo('004', '8:00', '103', '狗蛋4', '男');
+    let t005 = new classInfo('005', '8:20', '104', '狗蛋5', '女');
+    let t006 = new classInfo('006', '9:00', '105', '狗蛋6', '男');
+    let t007 = new classInfo('006', '9:00', '105', '狗蛋6', '男');
+    let t008 = new classInfo('006', '9:00', '105', '狗蛋6', '男');
+    let t009 = new classInfo('006', '9:00', '105', '狗蛋6', '男');
+
+    t001.getInfo();
+    t002.getInfo();
+    t003.getInfo();
+    t004.getInfo();
+    t005.getInfo();
+    t006.getInfo();
+    t007.getInfo();
+
+    document.onclick = function () {
+        console.log(t001.getIns());
+    }
+
+
+
+
+</script>
+</body>
+</html>

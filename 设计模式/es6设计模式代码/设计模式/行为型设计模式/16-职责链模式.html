@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    // 职责链模式
+    function request(value) {
+        if(value < 10000){
+            // 交由部门负责人处理
+            console.log('部门负责人处理')
+        }else if(value < 50000){
+            console.log('院负责人来处理')
+        }else if(value < 100000){
+            console.log('群负责人来处理')
+        }else if(value >= 100000){
+            console.log('董事长来处理');
+        }
+    }
+
+    request(5);
+    request(10000);
+    request(80000);
+    request(100000);
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

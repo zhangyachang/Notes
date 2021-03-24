@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Steak {
+        constructor () {
+            this.price = 10;
+            this.time = 10;
+        }
+    }
+
+    class Food {
+        constructor () {
+            this.price = 20;
+            this.time = 20;
+        }
+    }
+
+    class Noodle {
+        constructor () {
+            this.price = 30;
+            this.time = 30;
+        }
+    }
+
+    let Shop = function (name) {
+        let o = null;
+        switch (name) {
+            case 'Steak':
+                o = new Steak();
+                break;
+            case 'Food':
+                o = new Food();
+                break;
+            case 'Noodle':
+                o = new Noodle();
+                break;
+            default :
+                o = '没有你要的食物';
+                break;
+        }
+        return o;
+    };
+    let a = Shop('Steak');
+    let b = Shop('Food');
+    console.log(a);
+    console.log(b);
+
+
+</script>
+</body>
+</html>

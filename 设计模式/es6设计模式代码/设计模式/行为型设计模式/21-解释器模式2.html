@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div></div>
+    <div id="box">
+        <p></p>
+        <p></p>
+        <p>
+            <b></b>
+            <b></b>
+            <b></b>
+            <b id="b"></b>
+        </p>
+    </div>
+    <script>
+
+        function getPath(selector) {
+            let dom = document.querySelector(selector);
+            let domArr = [];
+
+            function getIndex(node) {
+                let index = 0;
+                while(node !== null){
+                    if(node.nodeName === dom.nodeName){
+                        index++;
+                    }
+                    node = node.previousElementSibling;
+                }
+                return index === 1 ? '' : index + '';
+            }
+
+
+            while(dom !== document.documentElement){
+                domArr.unshift(dom.parentNode.nodeName + getIndex(dom));
+                dom = dom.parentNode;
+            }
+
+            return domArr.join(' > ')
+        }
+
+
+
+
+        console.log(getPath('#b'));
+
+
+
+
+    </script>
+</body>
+</html>

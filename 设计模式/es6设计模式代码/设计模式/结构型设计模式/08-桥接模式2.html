@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 这种就和坦克大战，飞机大战也是的，他们有相同的功能，也有各自不同的功能
+
+    class Tank {
+        constructor () {
+            this.a = this.A();
+            this.b = this.B();
+        }
+        A () {}
+        B () {}
+    }
+
+    class Djun {
+        constructor () {
+            this.a = this.A();
+            this.c = this.C();
+        }
+        A() {}
+        C() {}
+    }
+
+    class Goudan {
+        constructor () {
+            this.a = this.A();
+            this.d = this.D();
+        }
+        A() {}
+        D() {}
+    }
+
+    // 上面这种着实麻烦吧，因为他们原型上面有相同的方法，咱们可以都抽离出来，谁用到了就把他们拿过去就好了
+
+    class A {}
+    class B {}
+    class C {}
+    class D {}
+
+    class Goudan {
+        constructor () {
+            this.a = new A();
+            this.b = new B();
+        }
+    }
+
+    class Tank2 {
+        constructor () {
+            this.a = new A();
+            this.b = new B();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

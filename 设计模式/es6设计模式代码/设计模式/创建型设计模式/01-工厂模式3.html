@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+
+
+    let Shop = class {
+        constructor (name) {
+            if(this[name]){
+                this[name].call(this);
+            }else{
+                return new Text('请输入正确的参数名称')
+            }
+
+        }
+        Noodle () {
+            this.price = 30;
+            this.time = 30;
+        }
+        Steak () {
+            this.price = 10;
+            this.time = 10;
+        }
+        Food () {
+            this.price = 20;
+            this.time = 20;
+        }
+    };
+
+    let o = new Shop('Food');
+    console.log(o);
+    let p = new Shop('Noodle');
+
+    console.log(p);
+    let a = new Shop('th');
+    console.log(a);
+
+
+</script>
+</body>
+</html>

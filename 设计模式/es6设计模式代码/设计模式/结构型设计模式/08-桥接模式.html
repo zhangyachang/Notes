@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //将抽象部分与它的实现部分分离，使他们都可以独立的变化
+    // 什么时候用到桥接模式呢？某些逻辑要拓展或者其他不希望实现结构复杂时，可以单独抽象出来，再利用桥接模式使用 而抽象部分和实现部分又可以单独拓展
+/*
+    (function () {
+
+        function addEvent() {
+
+        }
+
+        function ajax() {
+
+        }
+
+        addEvent(dom, 'click', f);
+
+        function f(e) {
+            let id = this.name;
+            ajax('get','xxxx?name='+id, function () {
+                // ……
+            })
+        }
+
+    })();
+    */
+    // 上面的ajax请求和this有太强的关联
+
+    (function () {
+
+        function addEvent() {
+
+        }
+
+        function ajax() {
+
+        }
+
+        addEvent(dom, 'click', clickFn)
+
+        function clickFn(e) {
+            let id = this.name;
+            getInfoById(id);
+        }
+        function getInfoById(id){
+            ajax('get', 'xxx?name='+id, function (msg) {
+                // ……
+            })
+        }
+
+        getInfoById(); // 使得这一部分功能可以拆出来使用
+    })();
+
+
+
+    function Fn() {
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 好处 针对于具体情况好  针对于某种情况好 在仅仅修改后面的一些前面的不变的情况下      缺点: 适用范围降低
+
+    function sum(x,y,z) {
+        return x+y+z;
+    }
+
+    let x = sum(1,2,3);
+    console.log(x);
+
+
+    function sum2(x){
+        return function (y) {
+            return function (z) {
+                return x+y+z;
+            }
+        }
+    }
+
+
+    let y = sum2(1)(2)(3);
+    console.log(y);
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        canvas{
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas" width="300" height="300"></canvas>
+
+<script>
+
+    let canvasCmd = (function () {
+
+        let canvas = document.getElementById('canvas'),
+            ctx = canvas.getContext('2d');
+
+        // 命令集合
+
+        let CMDList = {
+            beginPath () {
+                ctx.beginPath();
+            },
+            closePath () {
+                ctx.closePath();
+            },
+            strokeStyle (color) {
+                ctx.strokeStyle = color;
+            },
+            moveTo (x, y) {
+                ctx.moveTo(x, y);
+            },
+            lineTo (x, y) {
+                ctx.lineTo(x, y);
+            },
+            stroke () {
+                ctx.stroke();
+            },
+            goudan (x1, y1, x2, y2, x3, y3) {
+                ctx.beginPath();
+                ctx.moveTo(x1,y1);
+                ctx.lineTo(x2, y2);
+                ctx.lineTo(x3, y3);
+                ctx.closePath();
+                ctx.stroke();
+            }
+        };
+
+        return {
+            // 对外接口
+            execute (data) {
+                data.forEach(item => {
+                    let {command, params = []} = item;
+                    CMDList[command] && CMDList[command](...params);
+
+                })
+            },
+
+        }
+    })();
+
+    canvasCmd.execute([
+        {command: 'beginPath'},
+        {command: 'strokeStyle', params: 'red'},
+        {command: 'moveTo', params: [100, 100]},
+        {command: 'lineTo', params: [200, 200]},
+        {command: 'lineTo', params: [200, 50]},
+        {command: 'lineTo', params: 'red'},
+        {command: 'closePath'},
+        {command: 'stroke'},
+    ]);
+
+    canvasCmd.execute([
+        {command: 'goudan', params: [30, 30, 40, 40, 100, 20]}
+    ]);
+
+
+
+
+</script>
+</body>
+</html>

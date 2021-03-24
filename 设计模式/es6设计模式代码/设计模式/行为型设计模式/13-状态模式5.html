@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+   <!-- <script src="state-machine.js"></script>-->
+</head>
+<body>
+<script>
+
+
+    let StateMachine = (function () {
+        class State {
+            constructor ({init, transitions, methods}) {
+                this.state = init;
+                this.methods = methods;
+                this.transitions = transitions;
+                this.init.call(this);
+            }
+
+            init () {
+                for(var key of this.transitions){
+                    let name = key.name;
+                    this[name] = function () {
+                        console.log(this);
+                        this.methods['on'+name[0].toUpperCase() + name.slice(1)]();
+                        this.state = key.to;
+                    };
+                }
+            }
+        }
+        return State;
+    })();
+
+
+    var fsm = new StateMachine({
+        init: 'solid',
+        transitions: [
+            {name: 'aAA', from: 'solid', to: 'liquid'}, // 融化
+            {name: 'freeze', from: 'liquid', to: 'solid'}, // 冻结
+            {name: 'vaporize', from: 'liquid', to: 'gas'}, // 蒸发
+            {name: 'condense', from: 'gas', to: 'liquid'} // 浓缩
+        ],
+        methods: {
+            onAAA: function () {
+                console.log('I am Melt');
+            },
+            onFreeze: function () {
+                console.log('I am Freeze');
+            },
+            onVaporize: function () {
+                console.log('I am vaporize');
+            },
+            onCondense: function () {
+                console.log('I am condensed');
+            }
+        }
+    });
+
+
+    console.log(fsm.state);
+
+    fsm.aAA();
+
+    console.log(fsm.state);
+
+    fsm.freeze();
+
+    console.log(fsm.state);
+
+
+
+
+
+</script>
+</body>
+</html>

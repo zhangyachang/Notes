@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 建造房子的场景
+    // 建造者 -- 施工团队
+    /*
+        将一个复杂的对象的构建与表示分离，使得同样的构建过程可以创建不同的表示。
+        当我们构造的对象，内部逻辑较复杂时，使用建造者模式将内部各模块分开创建就非常合适。
+    */
+    let Builder = function () {
+
+        // 决定厅室
+        function Rooms(member) {
+            if(member <= 0){
+                throw new Error('入住人数错误！');
+            }
+            this.rooms = member >= 3 ? 3 : 2
+        }
+
+        // 决定面积
+        function FloorSpace(budget) {
+            if(typeof budget !== 'number' || Number.isNaN(budget) || (budget < 60)){
+                throw new Error('预算过低或错误')
+            }
+            this.budget = budget / 2;
+        }
+
+        function Style(style) {
+            this.style = style || '常规风格';
+        }
+
+        return class  {
+            constructor (member, budget, style) {
+                Rooms.call(this,member);
+                FloorSpace.call(this, budget);
+                Style.call(this, style);
+            }
+        }
+    }();
+
+    let house1 = new Builder(3, 100, '夏季风光');
+    let house2 = new Builder(1, 60);
+    console.log(house1);
+    console.log(house2);
+
+
+
+</script>
+</body>
+</html>

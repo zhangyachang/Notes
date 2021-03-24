@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    class Player {
+        constructor (name, enemy) {
+            this.name = name;
+            this.enemy = null;
+        }
+
+        win () {
+            console.log(`${this.name}赢了`);
+        }
+
+        lose () {
+            console.log(`${this.name}输了`);
+        }
+
+        die () {
+            console.log(`${this.name}死亡了`);
+        }
+    }
+
+    let player1 = new Player('goudan');
+    let player2 = new Player('xiaozi');
+
+    console.log(player1);
+    console.log(player2);
+
+    document.onclick = function () {
+        player1.win();
+    };
+
+
+
+
+</script>
+</body>
+</html>

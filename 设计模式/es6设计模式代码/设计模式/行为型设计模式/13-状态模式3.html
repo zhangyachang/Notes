@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #btn{
+            width: 100px;
+            height: 40px;
+            margin: 10px auto;
+
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">按钮</button>
+<script>
+
+    // 这个样子已经可以达到我们的目的了 但是把状态的改变和操作分开会更好一些
+
+    let Switch = {
+        // 所有的状态
+        FSM: {
+            on () {
+                console.log('on 状态对应的代码');
+                this.currentState = 'off';
+            },
+            off () {
+                console.log('off 状态对应的代码');
+                this.currentState = 'goudan';
+            },
+            goudan () {
+                console.log('goudan 状态对应的代码');
+                this.currentState = 'on';
+            }
+        },
+
+        currentState: 'off',
+
+        init () {
+            let oBtn = document.getElementById('btn');
+            let This = this;
+            oBtn.onclick = function () {
+                This.FSM[This.currentState].call(This);
+            }
+        }
+    };
+
+    // 初始化成功
+    Switch.init();
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

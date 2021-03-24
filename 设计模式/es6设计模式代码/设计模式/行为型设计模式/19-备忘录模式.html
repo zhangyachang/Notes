@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        ul>li{
+            width: 100px;
+            height: 30px;
+            margin: 10px;
+            line-height: 30px;
+            background: pink;
+            text-align: center;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+    </ul>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+
+
+        let request = (function () {
+            let cache = {};
+            return function (key) {
+                if(!cache[key]){
+                    // 缓存里面没有数据 --发送请求成功后处理数据 并放入缓存
+                    $.ajax({
+                        //
+
+                        success (msg){
+                            // 处理data
+                            result(data);
+
+                            // 缓存data
+                            cache[key] = data;
+                        }
+                    })
+                }else{
+                    // 缓存里面有数据 -- 直接处理
+                    result(cache[key]);
+
+                }
+            }
+        })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

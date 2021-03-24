@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            list-style: none;
+        }
+        #wrap{
+
+        }
+        #wrap ul{
+            overflow: hidden;
+            margin: auto;
+        }
+        #wrap ul li{
+            position: relative;
+            float: left;
+            width: 100px;
+            height: 100px;
+        }
+        #wrap ul li img{
+            width: 100%;
+            height: 100%;
+        }
+        #wrap ul li p{
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            background: rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+<script>
+
+    // 命令模式
+    // let data = [
+    //     {
+    //         url: 'img/1.jpg',
+    //         title: '图片1'
+    //     },
+    //     {
+    //         url: 'img/2.jpg',
+    //         title: '图片2'
+    //     },
+    //     {
+    //         url: 'img/3.jpg',
+    //         title: '图片3'
+    //     },
+    //     {
+    //         url: 'img/4.jpg',
+    //         title: '图片4'
+    //     },
+    // ];
+
+    // let oDiv = document.createElement('div'),
+    //     oUl = document.createElement('ul');
+    //
+    // oDiv.id = 'wrap';
+    // data.forEach(item => {
+    //     let oLi = document.createElement('li'),
+    //         oImg = document.createElement('img'),
+    //         oP = document.createElement('p');
+    //     oImg.src = item.url;
+    //     oP.innerHTML = item.title;
+    //     oLi.appendChild(oImg);
+    //     oLi.appendChild(oP);
+    //     oUl.appendChild(oLi);
+    // });
+    //
+    // oDiv.appendChild(oUl);
+    // document.body.appendChild(oDiv);
+
+
+    let data = [
+        {url: 'img/1.jpg', title: '图片1'},
+        {url: 'img/2.jpg', title: '图片2'},
+        {url: 'img/3.jpg', title: '图片3'},
+        {url: 'img/4.jpg', title: '图片4'}
+    ];
+
+
+    let view = (function () {
+
+        return function (id, data) {
+            let oDiv = document.createElement('div'),
+                oUl = document.createElement('ul');
+
+            oDiv.id = id;
+            data.forEach(item => {
+                let oLi = document.createElement('li'),
+                    oImg = document.createElement('img'),
+                    oP = document.createElement('p');
+                oImg.src = item.url;
+                oP.innerHTML = item.title;
+                oLi.appendChild(oImg);
+                oLi.appendChild(oP);
+                oUl.appendChild(oLi);
+            });
+
+            oDiv.appendChild(oUl);
+            document.body.appendChild(oDiv);
+        }
+
+    })();
+
+
+    view('wrap', data);
+
+
+
+</script>
+</body>
+</html>

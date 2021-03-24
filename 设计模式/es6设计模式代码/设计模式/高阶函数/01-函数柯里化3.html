@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+
+    function currying(fn, ...rest) {
+        let args = [...rest];
+        return function x(...rest) {
+            if(rest.length){
+                args.push(...rest);
+                return x;
+            }else{
+                console.log(args);
+                return [fn(...args), args=[]][0];
+            }
+        }
+    }
+
+    function sum (...rest) {
+        return rest.reduce((a, b) => a+b);
+    }
+
+
+    let sumCurrying = currying(sum);
+
+    sumCurrying(1)(2,3)(4);
+    sumCurrying(5);
+    sumCurrying(6);
+    console.log(sumCurrying());
+
+
+</script>
+</body>
+</html>

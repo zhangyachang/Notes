@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="box">12312312</div>
+<script>
+
+    let oBox = document.getElementById('box');
+
+    oBox.onclick = function () {
+        this.style.color = 'red';
+    };
+
+    // 过了一段时间之后
+
+    function decorate(dom, fn, ev) {
+        console.log(dom.onclick);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

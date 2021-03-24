@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    // 用 数组 或 对象 的映射来代替判断
+
+    function C(name) {
+        let obj = {
+            name: 'goudan',
+            age: 12,
+            sex: '男',
+            marry: false
+        };
+        return obj[name];
+    }
+
+    function C1(name) {
+        let x = '';
+        switch (name) {
+            case 'name':
+                x = 'goudan';
+                break;
+            case 'age':
+                x = 12;
+                break;
+            case 'sex':
+                x = '男';
+                break;
+            case 'marry':
+                x = false;
+                break;
+        }
+        return x;
+    }
+
+
+    console.log(C('age'));
+    console.log(C1('name'));
+
+
+
+
+
+
+
+
+
+
+/*
+
+    let B = (function () {
+        let state = ['狗蛋0', '狗蛋1', '狗蛋2', '狗蛋3', '狗蛋4'];
+        return function (num) {
+            return state[num];
+        }
+    })();
+    console.log(B(3));
+*/
+
+
+    /*
+        function B(num) {
+            let x = '';
+            switch (num) {
+                case 0:
+                    x = '狗蛋0';
+                    break;
+                case 1:
+                    x = '狗蛋1';
+                    break;
+                case 2:
+                    x = '狗蛋2';
+                    break;
+                case 3:
+                    x = '狗蛋3';
+                    break;
+                case 4:
+                    x = '狗蛋4';
+                    break;
+            }
+            return x;
+        }
+        let b = B(2);
+        console.log(b);
+    */
+
+
+
+
+
+/*
+
+    let A = (function () {
+        let arr = [
+            function () {
+                console.log('0 对应的代码');
+                // ……code
+            },
+            function () {
+                console.log('1 对应的代码');
+                // ……code
+            },
+            function () {
+                console.log('2 对应的代码');
+                // ……code
+            },
+            function () {
+                console.log('3 对应的代码');
+                // ……code
+            }
+
+        ];
+        return function (num) {
+            return arr[num]();
+        };
+    })();
+
+    A(0);
+
+*/
+
+
+
+/*
+    function A(num) {
+
+        switch (num) {
+            case 0:
+                console.log('0 对应的代码');
+                // ……code
+                break;
+            case 1:
+                console.log('1 对应的代码');
+                // ……code
+                break;
+            case 2:
+                console.log('2 对应的代码');
+                // ……code
+                break;
+            case 3:
+                console.log('3 对应的代码');
+                // ……code
+                break;
+        }
+    }
+    A(2);
+*/
+
+
+
+
+
+</script>
+</body>
+</html>

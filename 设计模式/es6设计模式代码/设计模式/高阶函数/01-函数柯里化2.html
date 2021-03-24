@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    function ajax(type, url, data, successFn) {
+        let xml = new XMLHttpRequest();
+        xml.open(type, url, true);
+        xml.send(data);
+
+        xml.onreadystatechange = function () {
+            if(this.readyState === 4){
+                successFn && successFn(this.response);
+            }
+        }
+    }
+
+    ajax('get', 'http://www.xiaoye121.com:8000', '', function () {
+        console.log('成功');
+        console.log(arguments);
+    });
+
+
+    function currying(fn, type) {
+        return function (...rest) {
+            fn(type, ...rest);
+        }
+    }
+
+    let ajaxGET = currying(ajax, 'get');
+
+
+    ajaxGET('http://www.xiaoye121.com:8000', '', function () {
+        console.log('柯里化之后');
+        console.log(arguments);
+    })
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

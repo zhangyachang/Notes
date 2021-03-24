@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+
+    function bumen(value) {
+        if(value < 10000){
+            console.log('部门负责人处理');
+        }else{
+            return 'next';
+        }
+    }
+
+    function yuan(value) {
+        if(value <= 50000){
+            console.log('院负责人来处理');
+        }else{
+            return 'next';
+        }
+    }
+
+    function qun(value) {
+        if(value < 100000){
+            console.log('群负责人来处理');
+        }else{
+            return 'next';
+        }
+    }
+
+    function CEO(value) {
+        if(value >= 100000){
+            console.log('董事长来处理');
+        }else {
+            console.log('不处理');
+        }
+    }
+
+
+    Function.prototype.before = function (beforeFn) {
+        let This = this;
+        return function () {
+            beforeFn.apply(this, arguments);
+            return This.apply(this,arguments);
+        }
+    };
+
+    Function.prototype.after = function (afterFn) {
+        let This = this;
+        return function () {
+            let res = This.apply(this,arguments);
+            if(res === 'next'){
+                return afterFn.apply(this, arguments);
+            }
+            return res;
+        }
+    };
+
+    bumen = bumen
+                .after(yuan)
+                .after(qun)
+                .after(CEO);
+
+
+
+    bumen(1000);
+    bumen(10000);
+    bumen(100000);
+    console.log('这里清除吗');
+
+
+
+
+</script>
+</body>
+</html>

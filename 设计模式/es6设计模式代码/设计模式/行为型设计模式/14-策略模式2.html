@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 充钱打游戏
+
+    // 玩家类
+    class Palyer {
+        constructor () {
+            this.totalCost = 0;
+            this.level = 'C';
+        }
+        // 充钱
+        consum (price) {
+            this.totalCost += price;
+            let result = Strategy.calc(this.level, price);
+            this.getLevel();
+            return result;
+        }
+        getLevel () {
+            let totalCost = this.totalCost;
+            if(totalCost >= 50000){
+                this.level = 'S';
+            }else if (this.totalCost >= 30000){
+                this.level = 'A';
+            }else if (this.totalCost >= 10000){
+                this.level = 'B';
+            }else{
+                this.level = 'C';
+            }
+        }
+
+
+    }
+
+    // 计价策略类
+    let Strategy = (function () {
+        // 策略
+        let s = {
+            S(price){
+                return price *0.85;
+            },
+            A(price){
+                return price * 0.9;
+            },
+            B(price){
+                return price * 0.95;
+            },
+            C(price){
+                return price;
+            }
+        };
+        return {
+            // 添加新策略的接口
+            addsty (name, fn) {
+                s[name] = fn;
+            },
+            // 计算策略对应的最终价格接口
+            calc(sty, price){
+                if(s[sty]){
+                    return s[sty](price);
+                }else{
+                    throw new Error('对应的策略接口不存在');
+                }
+            }
+        }
+    })();
+
+
+    const goudan = new Palyer();
+    console.log(goudan.consum(10000));
+    console.log(goudan.consum(10000));
+    console.log(goudan.consum(10000));
+    console.log(goudan.consum(10000));
+    console.log(goudan.consum(10000));
+    console.log(goudan.consum(10000));
+
+
+</script>
+</body>
+</html>

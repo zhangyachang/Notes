@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    // 外部迭代
+
+    let arr = [1,2,3,5,6];
+    let iter = arr[Symbol.iterator]();
+    console.log(iter.next());
+    console.log(iter.next());
+    console.log(iter.next());
+    console.log(iter.next());
+    console.log(iter.next());
+    console.log(iter.next());
+
+
+
+    // 自己实现一个外部迭代器
+    let Iterator = function (arr){
+        let len = arr.length;
+        let index = 0;
+        return {
+            next: function () {
+                return {
+                    value: arr[index++],
+                    done: index > len
+                }
+            }
+        }
+    };
+
+    let a = Iterator(arr);
+
+    console.log(a.next());
+    console.log(a.next());
+    console.log(a.next());
+    console.log(a.next());
+    console.log(a.next());
+    console.log(a.next());
+
+
+</script>
+</body>
+</html>

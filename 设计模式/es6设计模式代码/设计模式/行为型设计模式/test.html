@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+
+    function createDOM(domArr) {
+        let oFrag = document.createDocumentFragment();
+        let thisArr = domArr.shift();
+        thisArr.forEach(item => {
+            let dom = document.createElement(item);
+            if(domArr.length){
+                dom.appendChild( createDOM([...domArr]) )
+            }
+            oFrag.appendChild(dom);
+
+        });
+        return oFrag;
+    }
+
+
+    let a = createDOM([
+        ['div'],
+        ['p', 'p'],
+        ['span', 'span', 'span']
+    ]);
+
+    console.log(a);
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

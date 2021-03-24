@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 适配器模式
+    // 由于各种原因（结构升级，优化代码等），导致接口和之前不一样，而重构整个代码是很麻烦的，所以我们使用适配器代码将接口统一转换一下保证能正确的使用，这就是适配器的作用
+
+
+
+    $.ajax({
+        type: 'get',
+        url: 'url',
+        success: function (msg) {
+            // msg : [name, age, marry]
+            // 现在数据接口变了  {name: '', age: '', marry: ''};
+            msg = [msg.name, msg.age, msg.marry];
+
+            // 之后的代码不需要改变 简单的适配器
+
+        }
+    });
+
+
+    // 例子2
+
+    function fn(name, age, sex, name2) {
+
+    }
+
+    // 上面那种参数对应的写法有时候是不靠谱的，参数过多的情况可以使用 obj 的形式传参
+    // es6出来了解构赋值的方法，也方便了
+    function fn1(obj) {
+        name = obj.name || '默认值'
+        ……
+    }
+    // 或者
+    function fn2({obj, name, age, sex}) {
+
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

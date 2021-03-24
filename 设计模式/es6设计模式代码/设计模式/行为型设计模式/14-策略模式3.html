@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    let a = 11;
+    function Fn() {
+        console.log(this.name);
+        for(let i=0;i<arr.length;i++){
+            console.log(tis.name);
+        }
+    }
+
+    class Player {
+        constructor () {
+            this.totalCost = 0;
+            this.level = 'C';
+        }
+        consum (price) {
+            // 消费计入总额
+            this.totalCost += price;
+
+            // 找到最优惠价格
+            let result = [];
+            result[0] = Strategy.calc(this.level, price);
+            Strategy.newSty.forEach((value, index) => {
+               result[index+1] = Strategy.calc(value, price);
+            });
+            result = Math.min(...result);
+
+            // 评级
+            this.getLevel();
+            return result;
+        }
+        getLevel () {
+            let totalCost = this.totalCost;
+            if(totalCost >= 50000){
+                this.level = 'S';
+            }else if (this.totalCost >= 30000){
+                this.level = 'A';
+            }else if (this.totalCost >= 10000){
+                this.level = 'B';
+            }else{
+                this.level = 'C';
+            }
+        }
+    }
+
+    // 计价策略类
+    let Strategy = (function () {
+
+        // 策略
+        let s = {
+            S(price){
+                return price *0.85;
+            },
+            A(price){
+                return price * 0.9;
+            },
+            B(price){
+                return price * 0.95;
+            },
+            C(price){
+                return price;
+            }
+        };
+        return {
+            // 新增策略名集合
+            newSty: [],
+            // 添加新策略的接口
+            addSty(name, fn){
+                s[name] = fn;
+                this.newSty.push(name);
+            },
+            // 移出策略
+            removeSty(name){
+                Reflect.deleteProperty(s, name);
+                let index = this.newSty.indexOf(name);
+                if(index !== -1){
+                    this.newSty.splice(index, 1);
+                }
+            },
+
+            // 计算策略对应最终价格的接口
+            calc(sty, price){
+                if(s[sty]){
+                    return s[sty](price);
+                }else{
+                    throw new Error('对应的优惠策略不存在');
+                }
+            }
+        }
+    })();
+
+
+
+    Strategy.addSty('half', function (price) {
+        return price * 0.5;
+    });
+
+
+    let goudan = new Player();
+    console.log(goudan.consum(10000));
+    console.log(goudan.level);
+
+    console.log(goudan.consum(20000));
+    console.log(goudan.level);
+
+    Strategy.removeSty('half');
+
+    console.log(goudan.consum(100));
+
+
+</script>
+</body>
+</html>

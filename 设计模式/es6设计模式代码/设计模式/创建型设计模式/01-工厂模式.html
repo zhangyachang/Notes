@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 工厂模式就是使用同一类别的综合起来，以使接口统一方便调用，同时在修改和拓展时候更加方便
+    class Steak {
+        constructor () {
+            this.price = 10;
+            this.time = 10;
+        }
+    }
+
+    class Food {
+        constructor () {
+            this.price = 20;
+            this.time = 20;
+        }
+    }
+
+    class Noodle {
+        constructor () {
+            this.price = 30;
+            this.time = 30;
+        }
+    }
+
+    let a = new Steak();
+    let b = new Noodle();
+    console.log(a);
+    console.log(b);
+
+
+</script>
+</body>
+</html>

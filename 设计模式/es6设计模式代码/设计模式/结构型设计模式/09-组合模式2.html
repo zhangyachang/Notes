@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 抽象类
+    class ABSMenu {
+        constructor () {}
+        add () {
+            throw new Error('请重写add方法');
+        }
+    }
+
+
+    // 最终的菜单
+    class Menu extends ABSMenu{
+        constructor (id) {
+            super();
+            this.id = id;
+            this.child = [];
+        }
+        add (...rest) {
+            rest.forEach(item => {
+                this.child.push(item)
+            });
+            return this;
+        }
+        print () {
+            console.group(`第${this.id}桌`);
+            this.child.forEach(item => {
+                item.print();
+            });
+            console.groupEnd();
+        }
+    }
+
+    // 子菜单类
+    class Category extends ABSMenu {
+        constructor (name) {
+            super();
+            this.name = name;
+            this.child = [];
+        }
+        add (...rest) {
+            rest.forEach(item => {
+                this.child.push(item)
+            });
+            return this;
+        }
+        print () {
+            console.group(this.name);
+            this.child.forEach(item => {
+                item.print();
+            });
+            console.groupEnd(this.name);
+        }
+
+    }
+
+    // 菜品类
+    class Item extends ABSMenu {
+        constructor(type, spicy, number, price) {
+            super();
+            this.type = type;
+            this.spicy = spicy;
+            this.number = number;
+            this.price = price;
+        }
+        add () {
+            throw new Error('最后一层目录不能add!');
+        }
+        // 打印
+        print () {
+            console.log(`类别: ${this.type}, 辣度: ${this.spicy} 数量: ${this.number} 价格: ${this.price}`);
+        }
+    }
+
+
+
+    let a = new Menu(12).add(
+        new Category('主食').add(
+            new Item('米饭', '/', 5, 10),
+            new Item('面条', '/', 1, 8),
+            new Item('馒头', '/', 1, 3),
+        ),
+        new Category('菜品').add(
+            new Item('辣条', '特辣', 5, 4),
+            new Item('青菜', '特辣', 5, 4),
+            new Item('炒肉', '特辣', 5, 4),
+        ),
+        new Category('饮料').add(
+            new Item('雪碧', '/', 5, 10),
+            new Item('可乐', '/', 5, 10),
+            new Item('王老吉', '/', 5, 10),
+        ),
+    );
+
+    a.print();
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

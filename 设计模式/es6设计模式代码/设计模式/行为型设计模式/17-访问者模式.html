@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 我自己没有这个方法 我要实现这个功能 但是我又不想改变这个对象
+    let goudan = {
+        addAttr (name, age) {
+            this.name = name;
+            this.age = age;
+        }
+    };
+
+    goudan.addAttr('goudan', 15);
+    console.log(goudan);
+
+    let xiaozi = {};
+    console.log(xiaozi);
+    goudan.addAttr.call(xiaozi, 'xiaozi', 19);
+    console.log(xiaozi);
+
+    /***********************************************/
+    // 例子2
+
+    function fn() {
+        // arguments.push(2);
+        // 我本身是没有这个方法的，我们很容易想到之前的那种写法
+
+        Array.prototype.push.call(arguments, 2);
+        console.log(arguments);
+
+    }
+
+    fn(1,1,1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

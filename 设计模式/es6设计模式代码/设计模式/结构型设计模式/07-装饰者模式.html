@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 在不改变原有对象的基础上，对其进行包装拓展，以满足更复杂的需求
+    // 装饰者模式就是一种更灵活的继承方案，对对象进行所需要的拓展而不用重新构造出新的实例
+
+    class Person {
+        constructor (name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        showName () {
+            console.log(this.name);
+        }
+    }
+
+
+    let person1 = new Person('狗蛋1', 12)
+    let person2 = new Person('狗蛋2', 15)
+    let person3 = new Person('狗蛋3', 16)
+    let person4 = new Person('狗蛋4', 17)
+
+    console.log(person1)
+    console.log(person2)
+    console.log(person3)
+    console.log(person4)
+
+    function Decorator(obj, mJson) {
+        for(let [key, val]  of Object.entries(mJson)){
+            obj[key] = val;
+        }
+        return obj;
+    }
+
+    Decorator(person1, {
+        sex: '男',
+        marry: '未婚'
+    });
+    Decorator(person3, {
+        fn: function () {
+            console.log('11')
+        },
+        set: '山贼'
+    });
+
+    console.log(person1)
+    console.log(person2)
+    console.log(person3)
+    console.log(person4)
+
+
+
+
+
+</script>
+</body>
+</html>

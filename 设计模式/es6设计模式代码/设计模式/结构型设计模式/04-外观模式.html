@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 外观模式
+    // 对外提供统一的接口，内部实现各种不同的差异处理，或者是将各类操作综合在一起，对外提供统一的接口
+
+    function addEvent(el, type, Fn) {
+        if(document.addEventListener){
+            el.addEventListener(type, Fn);
+        }else if(document.attachEvent){
+            el.attachEvent('on'+type, Fn);
+        }else{
+            el['on'+type] = Fn;
+        }
+    }
+
+
+</script>
+</body>
+</html>

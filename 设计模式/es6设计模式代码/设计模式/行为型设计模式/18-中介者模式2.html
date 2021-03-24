@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul li{
+            width: 100px;
+            height: 30px;
+            margin: 2px 0;
+            line-height: 30px;
+            text-align: center;
+            color: #fff;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btn">展示所有的人</button>
+    <button id="joinRed">加入一个红队伍</button>
+    <button id="joinBlue">加入一个蓝队伍</button>
+
+<script>
+
+
+    class Player {
+        constructor (name, team) {
+            this.name = name;
+            this.team = team;
+
+            // 是否存活
+            this.isLive = true;
+            // 敌军
+            this.enemy = [];
+            // 伙伴
+            this.partner = [];
+        }
+
+        lose () {
+            console.log(`${this.name} - 输了`);
+        }
+        win () {
+            console.log(`${this.name} - 赢了`);
+
+        }
+        die () {
+            this.isLive = false;
+            console.log(`${this.name} - 死亡`);
+            let allDie = true;
+            this.partner.forEach(item => {
+                if(item.isLive){
+                    allDie = false;
+                }
+            });
+            if(allDie){
+                this.lose();
+
+                this.partner.forEach(item => {
+                    item.lose();
+                });
+
+                this.enemy.forEach(item => {
+                    item.win();
+                })
+            }
+
+        }
+    }
+
+
+    let PlayerFactory = (function () {
+        const playersArr = [];
+
+        return function (name, team) {
+            let player = new Player(name, team);
+            playersArr.push(player);
+            for(let i=0;i<playersArr.length;i++){
+                if(playersArr[i].team === player.team){
+                    playersArr[i] !== player && player.partner.push(playersArr[i]) && playersArr[i].partner.push(player);
+                }else {
+                    player.enemy.push(playersArr[i]);
+                    playersArr[i].enemy.push(player);
+                }
+            }
+            return player;
+        }
+    })();
+
+
+
+    let player1 = PlayerFactory('player1', 'red');
+    let player2 = PlayerFactory('player2', 'red');
+    let player3 = PlayerFactory('player3', 'red');
+    let player4 = PlayerFactory('player4', 'red');
+    let player5 = PlayerFactory('player5', 'red');
+    let player6 = PlayerFactory('player6', 'blue');
+    let player7 = PlayerFactory('player7', 'blue');
+    let player8 = PlayerFactory('player8', 'blue');
+    let player9 = PlayerFactory('player9', 'blue');
+    let player10 = PlayerFactory('player10', 'blue');
+
+    console.log(player1);
+    console.log(player2);
+    console.log(player3);
+
+
+    btn.onclick = function () {
+        console.log(player1);
+        console.log(player2);
+        console.log(player3);
+        console.log(player4);
+        console.log(player5);
+        console.log(player6);
+        console.log(player7);
+        console.log(player8);
+        console.log(player9);
+        console.log(player10);
+    };
+
+    player1.die();
+    player2.die();
+    player4.die();
+    player3.die();
+    player5.die();
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

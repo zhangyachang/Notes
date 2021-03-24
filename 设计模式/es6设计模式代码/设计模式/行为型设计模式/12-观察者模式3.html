@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <p>小贼开播提醒</p>
+    <p>二狗开播提醒</p>
+
+    <p>小花取消小贼的订阅</p>
+
+<script>
+
+
+    class Observer {
+        constructor () {
+            this.QUEUE = {};
+        }
+        // 订阅
+        subscribe (id, star, subFn) {
+            if(!this.QUEUE[star]){
+                this.QUEUE[star] = {};
+            }
+            this.QUEUE[star][id] = subFn;
+            console.log('订阅成功');
+        }
+        // 取消订阅
+        unsubscribe (id, star) {
+            if(this.QUEUE[star][id]){
+                delete this.QUEUE[star][id];
+                console.log(`${id}取消了对${star}的订阅`);
+            }
+        }
+        // 发布
+        publish (star) {
+            if(!this.QUEUE[star]) return ;
+            for (let item of Object.values(this.QUEUE[star])){
+                item();
+            }
+        }
+    }
+
+
+    let observer = new Observer();
+    observer.subscribe('goudan', 'xiaozei', function () {
+        console.log('狗蛋: 小贼开播了，快去观看吧');
+    });
+    observer.subscribe('xiaohua', 'xiaozei', function () {
+        console.log('小花: 贼哥开播了，我要马上去观看');
+    });
+    observer.subscribe('xiaogou', 'xiaozei', function () {
+        console.log('小狗: 贼哥开播了，我要马上去观看');
+    });
+    observer.subscribe('yc', 'ergou', function () {
+       console.log('yc: 二狗开播了，我要去观看了');
+    });
+
+
+
+    let aP = document.querySelectorAll('p');
+    aP[0].onclick = function () {
+        observer.publish('xiaozei');
+    };
+    aP[1].onclick = function () {
+        observer.publish('ergou');
+    };
+    aP[2].onclick = function () {
+        observer.unsubscribe('xiaohua', 'xiaozei');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+
+    function currying(fn, ...rest) {
+        let args = [...rest];
+        return function x(...rest) {
+            if(rest.length){
+                args.push(...rest);
+                return x;
+            }else{
+                console.log(args);
+                return [fn(...args), args=[]][0];
+            }
+        }
+    }
+
+
+    function ajax(type, url, data, successFn) {
+        let xml = new XMLHttpRequest();
+        xml.open(type, url, true);
+        xml.send(data);
+
+        xml.onreadystatechange = function () {
+            if(this.readyState === 4){
+                successFn && successFn(this.response);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
