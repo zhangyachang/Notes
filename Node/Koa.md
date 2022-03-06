@@ -121,6 +121,20 @@ router.get('/article',async (ctx,next)=>{
 
 
 
+**动态路由**
+
+```js
+//请求方式   http://域名/product/123
+router.get('/product/:aid',async (ctx)=>{
+   console.log(ctx.params); //{ aid: '123' }  //获取动态路由的数据
+   ctx.body='这是商品页面';
+});
+```
+
+
+
+
+
 ## 分模块
 
 把所有的路由都写到app.js里面会显得杂乱，特别多，所以可以分文件去处理
@@ -229,8 +243,6 @@ const path = require('path');
 
 app.use(koaStatic(path.join(__dirname,'/public')));  // 在这里设置就好了
 
-
-
 ```
 
 
@@ -328,7 +340,7 @@ app.use(session(CONFIG, app));
 
 ## 文件上传
 
-###koa-multer
+### koa-multer
 
 ```js
 const Koa = require('koa');
@@ -441,3 +453,29 @@ app.listen(3000,()=>{
 ​	
 
 ​	有一个问题啊，所有的后台服务都是一套代码，他是如何区分是不同的人访问的呢？
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 原型 app.context
+
+`app.context`是从中创建`ctx`的原型。 可以通过编辑`app.context`向`ctx`添加其他属性。当需要将`ctx`添加到整个应用程序中使用的属性或方法时，这将会非常有用。这可能会更加有效（不需要中间件）和/或更简单（更少的`require()`），而不必担心更多的依赖于ctx，这可以被看作是一种反向模式。
+
+例如，从`ctx`中添加对数据库的引用：
+
+```js
+app.context.db = db();
+
+app.use(async ctx => {
+  console.log(ctx.db);
+});
+```

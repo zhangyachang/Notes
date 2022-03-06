@@ -1,6 +1,6 @@
 # Mongodb
 
-##概念解析
+## 概念解析
 
 对比sql中的一些概念
 
@@ -32,7 +32,7 @@ mongod --dbpath D:\blog\mongoDB_dataBase
 mongo  // 就可以连接到数据库了
 ```
 
-##常用命令
+## 常用命令
 
 **数据库**
 

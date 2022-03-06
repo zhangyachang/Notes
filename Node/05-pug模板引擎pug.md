@@ -1,4 +1,4 @@
-#pug
+# pug
 
 ```js
 npm i -S pug
