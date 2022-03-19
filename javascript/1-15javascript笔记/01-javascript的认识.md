@@ -4,7 +4,7 @@ javascript的认识
 
 
 
-##一、前端三层
+## 一、前端三层
 
 结构层：html标签
 
@@ -12,7 +12,7 @@ javascript的认识
 
 行为层：js
 
-##二、js代码放置的位置 script的位置
+## 二、js代码放置的位置 script的位置
 
 1. js代码写在script标签里面
 
@@ -192,7 +192,7 @@ goudan.onmouseout = function () {
 
 
 
-##十、操作样式
+## 十、操作样式
 
 Js在修改元素样式的时候，一般修改行内样式
 
@@ -206,7 +206,7 @@ goudan.onmouseover = function(){
   	this.style.background = "#000";
 };
 goudan.onmouseout = function () {
-	this.innerHTML = "";
+		this.innerHTML = "";
   	this.style.background = "#999";
 }
  ```
@@ -285,7 +285,7 @@ onerror		//当加载文档或图像时发生某个错误
 
 函数分为两种：	有名函数，就是说这个函数是有名字的。function fn(){};
 
- 					匿名/无名函数，就说没有名字的函数。function(){};
+ 	匿名/无名函数，就说没有名字的函数。function(){};
 
 注意：匿名函数不能一个人孤独的呆着。
 

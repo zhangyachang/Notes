@@ -22,7 +22,7 @@ javascript与java没有一毛钱关系。  北大和北大青鸟   ，  雷锋�
 
  
 
-## 	ECMAScript是javascript语音的标准。
+## 	ECMAScript是javascript语言的标准。
 
 ​	
 
