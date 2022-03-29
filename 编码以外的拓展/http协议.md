@@ -57,9 +57,9 @@ https	默认端口号443
 
 
 
-##二. http的版本和区别
+## 二. http的版本和区别
 
-####1. http1.1
+#### 1. http1.1
 
 ```js
 有四个版本呢
@@ -148,15 +148,15 @@ https会去一个证书服务器去验证，是不是有效的 必须是品牌�
 最终得到 一个加辣椒 加鸡蛋的手抓饼
 ```
 
-###保存状态的几种方式
+### 保存状态的几种方式
 
-####1. cookie
+#### 1. cookie
 
 ​	cookie是  **保存在浏览器里面的**
 
 ​	每次发送请求（ajax   直接在网址栏输入网址访问）都会把已经保存的cookie一起发送给后台
 
-####2. session
+#### 2. session
 
 ​	session是 **保存在后台的**，发送一个cookie给浏览器（相当于身份证 用来证明你是谁）
 
@@ -164,7 +164,7 @@ https会去一个证书服务器去验证，是不是有效的 必须是品牌�
 
 ​	（session可以是在数据库  在文件  在内存中的 是自己去做的吧应该是）
 
-####3. token
+#### 3. token
 
 ​	token是后台生成的一段字符串 ^#%234243jsdfjkjkjk
 
@@ -186,9 +186,9 @@ https会去一个证书服务器去验证，是不是有效的 必须是品牌�
 
 
 
-####1. Request URL 请求的地址
+#### 1. Request URL 请求的地址
 
-####2. Request Method 请求方式
+#### 2. Request Method 请求方式
 
 ```html
 get 
@@ -252,6 +252,8 @@ ipv6 第四个版本 第六个版本
 
 ​	X开头的 自定义的
 
+
+
 #### Catch-Control
 
 ```js
@@ -267,7 +269,7 @@ etag 代表一个标识，用来标识文件是否被修改
         自己强制刷新的话会刷新到的
 ```
 
-####Connection: 
+#### Connection: 
 
 ```js
 Keep-Alive
@@ -280,7 +282,7 @@ Keep-Alive
 服务器默认的是5分钟
 ```
 
-####Content-Encoding: 
+#### Content-Encoding: 
 
 ```js
 gzip 压缩
@@ -299,7 +301,7 @@ image/gif
 image/png ....
 ```
 
-####Date 
+#### Date 
 
 ```js
 new Date("Thu, 20 Dec 2018 09:20:13 GMT").toLocaleString()
@@ -314,14 +316,14 @@ BWS1.1
 nginx  可以去注释掉那个版本 系统
 ```
 
-####Vary: 
+#### Vary: 
 
 ```js
 缓存服务器的一些信息
 Accept-Encoding
 ```
 
-####X-Ua-Compatible: 
+#### X-Ua-Compatible: 
 
 ```js
 html的 meta里面也有这个

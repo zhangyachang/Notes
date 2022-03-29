@@ -83,6 +83,7 @@ var obj = {
   	hobby : "woman",
   	0 : "我是数字属性名"
 };
+
 for(var i in json){
   	console.log(i);   //这个东西是里面所有的 属性
   	//console.log(json[i]);  //这个里面取的所有的值

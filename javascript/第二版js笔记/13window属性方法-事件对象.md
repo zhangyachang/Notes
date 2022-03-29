@@ -4,15 +4,13 @@
 
 #### 1. window方法
 
-
-
 **window.onscroll**
 
 滚动事件
 
 ```js
 window.onscroll = function(){
-    console.log('滚动事件');
+	console.log('滚动事件');
 };
 ```
 

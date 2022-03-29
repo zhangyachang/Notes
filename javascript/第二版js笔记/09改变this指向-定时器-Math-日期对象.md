@@ -107,6 +107,63 @@ if(!-[1,]){
 
 
 
+#### 实现apply
+
+```js
+Function.prototype.myApply = function (context, args) {
+  context = context || window;
+  args = args || [];
+
+  let key = Symbol();
+  context[key] = this;
+  let result = context[key](...args);
+  Reflect.deleteProperty(context, key);
+  return result;
+};
+```
+
+
+
+
+
+#### 实现call
+
+```js
+Function.prototype.myCall = function (context, ...args) {
+  context = context || window;
+  args = args || [];
+
+  let key = Symbol();
+  context[key] = this;
+  let result = context[key](...args);
+  Reflect.deleteProperty(context, key);
+  return result;
+};
+```
+
+
+
+#### 实现bind
+
+```js
+Function.prototype.myBind = function (context, ...args) {
+  const fn = this;
+  args = args ? args : [];
+  return function newFn(...newFnArgs) {
+    if (this instanceof newFn) {
+      return new fn(...args, ...newFnArgs);
+    }
+    return fn.apply(context, [...args, ...newFnArgs]);
+  };
+};
+```
+
+
+
+
+
+
+
 ## 定时器
 
 window方法
