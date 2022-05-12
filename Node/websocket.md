@@ -58,13 +58,12 @@ io.on('connection',socket=>{
     
     //发送消息的方法   参数 1.发送的名称 2.正式的内容
     io.emit('wulv'，{name:'欢迎加入'});  //当监听到上面的东西时，就发送
-    
+
     //监听
     socket.on('xiexie',(data)=>{
         console.log(data);
     })
 });
-
 ```
 
 

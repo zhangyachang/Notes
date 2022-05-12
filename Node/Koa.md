@@ -88,11 +88,11 @@ app.use(async (ctx,next)=>{
 });
 // localhost:3000  index页面
 router.get('/',async (ctx,next)=>{
-    console.log('中间件1接收get请求---》');
+    console.log('中间件1接收get请求--->');
     await next();
     console.log('中间件1 响应请求');
 }, async (ctx,next)=>{
-    console.log('中间件2接收get请求---》');
+    console.log('中间件2接收get请求--->');
     await next();
     console.log('中间件2 响应请求');
 });
@@ -446,7 +446,7 @@ app.use(async (ctx) => {
 });
 
 app.listen(3000,()=>{
-    console.log(`服务启动成功`);
+	console.log(`服务启动成功`);
 });
 ```
 

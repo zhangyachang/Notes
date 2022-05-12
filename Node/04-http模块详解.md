@@ -84,6 +84,7 @@ let server = http.createServer((req,res)=>{
     }
     res.end();
 });
+
 server.listen(3000);
 console.log('服务启动成功了');
 ```
@@ -108,7 +109,7 @@ http.createServer((req,res)=>{
 
 ```js
 fs.readFile('./index.html','utf8',(err,data)=>{
-    if(err) throw err;
+	if(err) throw err;
     res.end(data);
 });
 ```

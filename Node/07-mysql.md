@@ -283,7 +283,7 @@ $.ajax({
     success : function(data){
 		console.log(data);
     },
-})
+});
 
 //**************************
 index.js里面响应js里的ajax

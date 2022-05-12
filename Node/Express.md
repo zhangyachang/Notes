@@ -37,9 +37,9 @@ dependencies: 当前项目所使用的依赖模块
 {
     "name": "app",
     "version": "0.0.1",
-        "dependencies": { // 当前项目所使用到的依赖模块
-            "express": "^4.16.4" // 使用的依赖和版本
-        }
+    "dependencies": { // 当前项目所使用到的依赖模块
+        "express": "^4.16.4" // 使用的依赖和版本
+    }
 }
 ```
 
@@ -339,7 +339,7 @@ router.get('/aa/:id/:search', (req, res) => {
 ```js
 router.all('/all', (req, res) => {
     console.log(req.method);
-})  
+});
 
 router.use('/all', (req, res) => {
     console.log(req.method);
@@ -401,7 +401,7 @@ res.cookie('login',{name:user},{maxAge:1000*60*60*24*365})
 app.get('/setc',function(req,res){
     res.cookie('resc', '设置到cookie里的值', { expires: new Date(Date.now() + 900000), httpOnly: true });
     res.end('cookies set ok')
-})
+});
 ```
 
 ```js
@@ -439,7 +439,6 @@ const session = require('express-session');
 
 app.use(session( { secret:'node' } ));// 密钥
 
-
 //  session 所有后台页面都是可以访问到的
 //  保存到服务器上面的
 //  session 在关闭页面的时候 session下面保存的所有数据 会清空
@@ -461,8 +460,8 @@ app.use(session({
 // 上面的那种是关闭浏览器结束会话
 
 app.use(session({
-    secret: '12345',
-   name: 'testapp',   //这里的name值得是cookie的name，默认cookie的name是：connect.sid
+	secret: '12345',
+   	name: 'testapp',   //这里的name值得是cookie的name，默认cookie的name是：connect.sid
     cookie: {maxAge: 80000 },  //设置maxAge是80000ms，即80s后session和相应的cookie失效过期
     resave: false,
     saveUninitialized: true,

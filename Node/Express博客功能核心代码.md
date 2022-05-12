@@ -10,7 +10,7 @@
 //插入数据
 'INSERT INTO nodeuser (id,user,pass) VALUES (0,?,?)',[user,pass],
     
- res.render('index.ejs')；   render是用来响应模板ejs的
+ res.render('index.ejs');   render是用来响应模板ejs的
 ```
 
 ### 2. 登录
@@ -77,7 +77,7 @@ const crypto = require('crypto');
 
 router.post('/',(req,res)=>{
     md5 = crypto.createHash('md5');
-})
+});
 //加密过程
 				加密   密码    编码格式
 let newPass = md5.update(pass).digest('hex');
@@ -146,7 +146,7 @@ ENGINE = InnoDB CHARSET=utf8;
 发表的时间以服务器的时间为准，如果用户的时间错误了，那么提交的时间也就错误了
 
 ```js
-router.post('/article',(req,res)=>{
+router.post('/article',(req, res)=>{
     let title = req.body.title,
         tag = req.body.tag,
         author = req.body.author,
@@ -357,14 +357,14 @@ CREATE TABLE `node`.`nav`(
   `navid` varchar(64) NOT NULL ,
   `leve` varchar(64) NOT NULL ,
   PRIMARY KEY (`id`)
-  )
+)
 ENGINE = InnoDB CHARSET=utf8;
 ```
 
 
 
 ```js
-查询数据多条件的还可以这样
+// 查询数据多条件的还可以这样
 sql('select * from nav where leve = 1',(err,data)=>{
     for(let i in data){
     	sql('select * from nav where leve = 2 and navid = ?',[data[i]['navid']],(err,data)=>{
@@ -450,7 +450,7 @@ buffer.js
 ​	就是用来操作数据类型的
 
 ```js
-读取文件的时候，如果不设置那个utf-8 他就是一个十六进制 或者说二进制的数
+// 读取文件的时候，如果不设置那个utf-8 他就是一个十六进制 或者说二进制的数
 ```
 
 ```js
@@ -685,7 +685,7 @@ options = {
     headers:{   //我们自己弄的话，他的默认参数有的就不是那种了 设置一下编码格式
     	//设置编码格式  属性必须带引号了
     	"Content-Length":"utf-8",
-	}  
+	}
 }
 
 const fs = require('fs');
@@ -693,7 +693,7 @@ const fs = require('fs');
 //向外发送http 的 get请求
 
 //1.网址  2.回调
-http.get('http://node.js.cn/',res=>{
+http.get('http://node.js.cn/', res=>{
     //请求图片的时候需要设置一下请求编码格式为二进制
     res.setEncoding('binary');
     //当请求有数据的时候出发

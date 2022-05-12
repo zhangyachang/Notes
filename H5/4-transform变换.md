@@ -110,7 +110,7 @@ div{
   	width:100px; height:100px; background:red; 
   	animation:move 3s;
 }
-@-webkit-keyframes move{
+@-webkit-keyframes move {
   25%{transform: scale(1.2);}
   50%{transform: scale(1.5);}
   75%{transform: scale(1.2);}

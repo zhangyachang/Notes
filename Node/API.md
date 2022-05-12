@@ -119,7 +119,6 @@ OAuth就是为了解决上面这些问题而诞生的。
 passport.js
 // 基于node.js的  他有很多不同的策略
 
-
 passport-http 基本的http策略
 passport-oauth2-client-password  基于密码的oauth
 passport-http-bearer
