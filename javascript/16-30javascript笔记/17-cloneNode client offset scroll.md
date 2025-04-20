@@ -2,11 +2,7 @@
 client offset scroll的区别
 ---
 
-
-
 在获取元素属性中，可以获取行内样式，css样式，还有一种可以获取元素的宽高等的方法。
-
-
 
 ## 一、client  属性
 
@@ -44,10 +40,8 @@ scrollWidth/scrollHeight
 
 ```js
 总结 没有超出 || 设置超出隐藏的时候  和clientWidth一样
-	 超出 && 没有设置超出隐藏的时候  是少加一部分超出的那一边的padding
+     超出 && 没有设置超出隐藏的时候  是少加一部分超出的那一边的padding
 ```
-
-
 
 ## 滚动高度   scrollTop  //  scrollLeft
 
@@ -56,30 +50,24 @@ scrollWidth/scrollHeight
 ```js
 在chrome 62.0.3版本之前 使用的是  document.body.scrollTop
  大快人心的是  62.0.3以后，谷歌废除了  上一个方法，  跟火狐和IE统一使用document.documentElement.scrollTop/document.documentElement.scrollLeft
-    
-    
+
+
  document.documentElement.scrollTop/document.documentElement.scrollLeft
      兼容火狐和IE
-    
+
 document.documentElement.scrollTop  以后统一使用这个方法。。
 ```
-
-
 
 ```js
 兼容写法
 document.body.scrollTop || document.documentElement.scrollTop;
 ```
 
-
-
 ```js
 window.onscroll = function(){
     console.log(document.body.scrollTop || document.documentElement.scrollTop);
 }
 ```
-
-
 
 ## 四、文档相关
 
@@ -91,4 +79,4 @@ window.onscroll = function(){
 
 3.window.innerWidth // window.innerHeight
 
-  获取可视区宽高+滚动条的宽度	不兼容IE8（没多大用）
+  获取可视区宽高+滚动条的宽度    不兼容IE8（没多大用）

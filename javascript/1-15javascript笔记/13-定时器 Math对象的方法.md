@@ -49,6 +49,6 @@ Math(x,y);   //x的y次幂
 
 ```js
 setInterval(function(){
-  	console.log(Math.floor(Math.random()*2 + 2));
+      console.log(Math.floor(Math.random()*2 + 2));
 },1000)
 ```

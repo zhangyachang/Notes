@@ -1,12 +1,10 @@
 1. 数组里的每一项数据，如果可以进行运算，统统都会运算为最简结果为止。
 
 2. 实现连个数字之间的交换不借助第三者 
-
+   
    ```js
    a = [b, b=a][0];
    ```
-
-   
 
 ## 一、动静态获取
 
@@ -18,14 +16,14 @@
 
 ## 二、json对象
 
-```
+```js
 var obj = {
-  	name : "xiaoxiao",
-  	age : 18,
-  	marry : false,
-  	sex : "man",
-  	hobby : "woman",
-  	0 : "我是数字属性名"
+      name : "xiaoxiao",
+      age : 18,
+      marry : false,
+      sex : "man",
+      hobby : "woman",
+      0 : "我是数字属性名"
 };
 ```
 
@@ -41,12 +39,11 @@ console.log(obj); // 拿到obj里面所有的属性和值
 obj.length; // 没有这个东西，没有长度
 ```
 
-**注意 **
+**注意**
 
 1. 对象里面的数据的存放方式，键值对
 
 2. json格式，在其他的语言里，对象的属性必须加双引号
-
 
 3. 取值，   对象.属性名
 
@@ -54,10 +51,7 @@ obj.length; // 没有这个东西，没有长度
 
 4. alert（obj） 弹窗的表现为【object Object】；
 
-
 5. 没有长度length
-
-
 
 ## 三、for in循环
 
@@ -71,26 +65,25 @@ for (var i in obj){   }
 
 ```js
 var obj = {
-  	name : "xiaoxiao",
-  	age : 18,
-  	marry : false,
-  	sex : "man",
-  	hobby : "woman",
-  	0 : "我是数字属性名"
+      name : "xiaoxiao",
+      age : 18,
+      marry : false,
+      sex : "man",
+      hobby : "woman",
+      0 : "我是数字属性名"
 };
 for(var i in json){
-  	console.log(i);   //这个东西是里面所有的 属性
-  	//console.log(json[i]);  //这个里面取的所有的值
+      console.log(i);   //这个东西是里面所有的 属性
+      //console.log(json[i]);  //这个里面取的所有的值
 }
 ```
 
 2. 遍历 数组
-
+   
    ```js
    a = [1,2,3,3,4,5,46,56,100];
    for(var abc in a){
-     	console.log(abc);			//下标
-     	console.log(a[abc]);		//取值
+         console.log(abc);            //下标
+         console.log(a[abc]);        //取值
    }
    ```
-

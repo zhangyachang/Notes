@@ -1,4 +1,4 @@
-1.  Src具有跨域请求的能力
+1. Src具有跨域请求的能力
 
 Jsonp 是一种非正式协议，就是script标签的src属性去拿别人服务器上的数据。
 
@@ -12,25 +12,23 @@ Jsonp 是一种非正式协议，就是script标签的src属性去拿别人服�
 coonsole.log(encodeURI('  '));
 ```
 
-
-
 ## JSONP
 
 其实jsonp其实就是将这种数据发送到后台
 
 ```js
 var oScript = document.createElement('script');
-oScript.src = 'http://tanzhouweb.com/php.php?jsonp=getData';
+oScript.src = 'http://xxx.com/php.php?jsonp=getData';
 document.body.appendChild(oScript);
 
 function getData(data){
-  	//在这里处理数据
+      //在这里处理数据
 }
 ```
 
 问号后面的jsonp就是后台接受的东西，然后getData是js中的函数名，也就是回调函数了吧
 
-**体会 **
+**体会**
 
 ```js
 这里面的src其他的都是数据

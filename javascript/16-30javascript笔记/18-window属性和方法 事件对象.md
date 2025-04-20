@@ -24,11 +24,9 @@ document.onclick = function(){
 }
 ```
 
+window.close()关闭当前窗口
 
-
-\5. window.close()关闭当前窗口
-
-\6. window.location.href = url;  在当前页面进行重定向
+window.location.href = url;  在当前页面进行重定向
 
 window.location
 
@@ -69,6 +67,7 @@ document.onclick = function(e){
     e = e || window.event;
     console.log(e.keyCode);
 }
+
 inp.onkeydown = function(e){
     e = e || window.event;
     console.log(e.code);

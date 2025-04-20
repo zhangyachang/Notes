@@ -2,8 +2,6 @@
 Ajax
 ---
 
-
-
 #### Ajax
 
 > Asynchronous Javascript And XML（异步 JavaScript 和 XML）是指一种创建交互式网页应用的网页开发技术
@@ -38,10 +36,10 @@ ajax不能跨域，跨域需要服务端进行相应的设置，总之，不是�
 
 ```js
 //ajax的使用极其简单，只有4步：
-1.创建ajax对象 	xhr = new XMLHttpRequest();
-2.建立请求		xhr.open(type,url,boolean)	//type请求方式（Get or post） url(后台接口) bool(是否异步 true是异步，false则同步)
-3.发送请求		xhr.send();
-4.监听状态码			xhr.onreadystatechange=function(){}
+1.创建ajax对象     xhr = new XMLHttpRequest();
+2.建立请求        xhr.open(type,url,boolean)    //type请求方式（Get or post） url(后台接口) bool(是否异步 true是异步，false则同步)
+3.发送请求        xhr.send();
+4.监听状态码            xhr.onreadystatechange=function(){}
 //结束
 ```
 

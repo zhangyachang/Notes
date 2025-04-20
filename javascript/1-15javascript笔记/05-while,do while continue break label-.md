@@ -40,8 +40,8 @@ fy:
 ```js
 var i = 0;
 while(i<6){
-  	document.write(i + "<br />");
-  	i++;
+      document.write(i + "<br />");
+      i++;
 };
 /*while 当条件成立时，执行语句*/ 
 ```
@@ -53,8 +53,8 @@ while当条件成立时，执行语句
 ```js
 var i = 7;
 do{
-  	document.write(i + "<br />");
-  	i++;
+      document.write(i + "<br />");
+      i++;
 }while(i<6);
 /*先执行一次，再判断条件，至少执行一次*/ 
 ```

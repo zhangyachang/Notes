@@ -10,7 +10,7 @@
 
 注意：
 
-共同点：都可以用来改变函数执行时的this指向, **会主动执行函数. **
+共同点：都可以用来改变函数执行时的this指向, **会主动执行函数.**
 
 传null时，会把指向指向window 
 
@@ -20,7 +20,7 @@ call apply  bind   传null是  this 指向window
 
 改变this指向时，只对本次执行生效。
 
-##三、bind
+## 三、bind
 
 bind的返回值是一个函数，所以还是需要加上括号执行。
 
@@ -28,11 +28,9 @@ bind的返回值是一个函数，所以还是需要加上括号执行。
 call 、bind 、 apply 这三个函数的第一个参数都是 this 的指向对象，第二个参数差别就来了：
 call的参数是直接放进去的，第二第三第n个参数全都用逗号分隔，直接放到后面  obj.myFun.call(db,'成都', ... ,'string' )；
 apply的所有参数都必须放在一个数组里面传进去  obj.myFun.apply(db,['成都', ..., 'string' ]);
-bind除了返回是函数以外，它 的参数和call 一样。
+bind除了返回是函数以外，它的参数和call 一样。
 当然，三者的参数不限定是string类型，允许是各种类型，包括函数 、 object 等等
 ```
-
-
 
 ## 四、小技巧
 
@@ -42,21 +40,19 @@ bind除了返回是函数以外，它 的参数和call 一样。
 
 ```js
 if(!-[1,]){
-  	alert("这是ie678");
+      alert("这是ie678");
 }
 !-[1,]  NaN  false true
 ```
 
- 
-
 3. 遍历json属性名到数组
-
+   
    ```js
    var json = {
-     	a : 1,
-     	b : 2,
-     	name : "我的",
-     	aa : 123
+         a : 1,
+         b : 2,
+         name : "我的",
+         aa : 123
    };
    var arr = [];
    for( arr[arr.length] in json);
@@ -67,15 +63,15 @@ if(!-[1,]){
 
 ```js
 var json = {
-  	a : 1,
-  	b : 2,
-  	name : "我的",
-  	aa : 123
+      a : 1,
+      b : 2,
+      name : "我的",
+      aa : 123
 };
 var arr = [];
 
 for(var i in json){
-  	arr[arr.length] = json[i];
+      arr[arr.length] = json[i];
 }
 console.log(arr);
 ```

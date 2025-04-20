@@ -6,7 +6,6 @@
 
 2. cookie是一种存储数据的方式，存储在电脑上，只要设定合适存储时间，即使关掉浏览器下次访问也能拿取；
 
-
 3. 不同浏览器cookie存储位置不一样，不用域名cookie存储文件夹不一样
 
 4. 大部分浏览器需要在服务器环境下才能运用cookie，火狐可以本地访问
@@ -82,17 +81,15 @@ consol.log( document.cookie );
     function format(n) {
         return n<10?"0"+n:n;
     }
-</script>	
-</body>	
+</script>    
+</body>    
 ```
 
-**注意： **
+**注意：**
 
 ```js
 [^1]  取反  不是1
 ```
-
-
 
 ## cookie的封装
 
@@ -105,7 +102,7 @@ consol.log( document.cookie );
 setCookie({
   fengyu : 666
 },5)
- 
+
 function setCookie(json,time) {
     var timer = new Date(Date.now()+time*365*24*60*60*1000).toUTCString();
     for(var key in json){

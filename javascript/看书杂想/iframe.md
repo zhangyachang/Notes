@@ -4,15 +4,11 @@
 document.sheet
 ```
 
-
-
 操作子框架中的dom元素
 
 操作子文档中的
 
 是否可以操作不同源下的东西
-
-
 
 ## 不同源的情况下
 
@@ -29,12 +25,6 @@ document.sheet
 ```js
 看iframe 是否在你的控制范围，如果是那就可以操作，可以通过postMessage的方式去调用iframe里面的代码
 ```
-
-
-
-
-
-
 
 ## 新窗口打开
 
@@ -81,7 +71,7 @@ document.sheet
     新打开的窗口
     <script>
         document.onclick = function () {
-       		//-------------这个东西就是谁打开了它的window对象
+               //-------------这个东西就是谁打开了它的window对象
             opener.document.body.style.background = 'skyblue';  
             close();
         }
@@ -89,16 +79,3 @@ document.sheet
 </body>
 </html>
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
