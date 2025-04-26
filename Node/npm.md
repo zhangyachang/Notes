@@ -4,8 +4,6 @@
 
 node的包管理器，包也就是模块
 
-
-
 ## 命令
 
 ```js
@@ -50,8 +48,6 @@ npm unplblish test -f
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
 
-
-
 搭建一个简单的Koa服务器
 
 ```js
@@ -62,8 +58,6 @@ app.use(async (ctx)=>{
 });
 app.listen(3000);  // 监听端口
 ```
-
-
 
 ## node_modules
 

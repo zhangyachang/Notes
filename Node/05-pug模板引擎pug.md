@@ -10,12 +10,10 @@ npm i -S pug
 npm i -S koa-views  // 借助koa-views 让koa与视图模板结合在一起
 ```
 
-
-
 ```js
 const Koa = require('koa');
 const views require('koa-views');
-const {join} = require('path');
+const { join } = require('path');
 // pug不需要引入进来
 
 const app = new Koa();
@@ -27,8 +25,6 @@ app.listen(3000,()=>{
     console.log('服务启动成功');
 })
 ```
-
-
 
 ## 基本的使用规则
 
@@ -85,8 +81,6 @@ case friends
     p.description 用户没有描述
 ```
 
-
-
 ## 循环
 
 ```js
@@ -97,7 +91,6 @@ case friends
 - var list = ["Uno", "Dos", "Tres", "Cuatro", "Cinco", "Seis"]
 each item in list
   li= item
-
 ```
 
 ## 包含

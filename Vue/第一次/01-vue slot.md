@@ -40,7 +40,7 @@ p{
 }
 /*结束的时候*/
 .show-leave{
-    
+
 }
 ```
 
@@ -95,7 +95,7 @@ p{
 var app = new Vue({
     el:"#app",
     data:{
-        a:''
+        a: ''
     },
     directives:{
         wulv:{

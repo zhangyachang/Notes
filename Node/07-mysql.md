@@ -28,8 +28,6 @@ SHOW DATABASES
 show tables
 ```
 
-
-
 5.使用mldn数据库
 
 ```js
@@ -40,7 +38,7 @@ USE mldn;
 
 ```js
 CREATE TABLE news(
-	nid int auto_increment,
+    nid int auto_increment,
     title varchar(30) NOT NULL,
     content text,
     constraint pk_nid primary key(nid)
@@ -78,9 +76,9 @@ select last_insert_id()
 select * from news where 1=1 LIMIT 0,5
 ```
 
-​	MYSQL的下标是从0开始的   分页要比oracle简单很多
+​    MYSQL的下标是从0开始的   分页要比oracle简单很多
 
-​	而如果程序想要使用mysql开发
+​    而如果程序想要使用mysql开发
 
 重启mysql
 
@@ -100,19 +98,15 @@ show create table '表名'
 source d:/db_akjsd.sql;
 ```
 
-
-
-
-
 ## 在node中的使用
 
 ```js
 问题
-	有一个小问题，为什么那个查询的地方的函数的参数对应不上它不会报错
+    有一个小问题，为什么那个查询的地方的函数的参数对应不上它不会报错
 小知识点 数据库 编码格式 自动增长 主键
 ```
 
-​	当时连接数据库真的是麻烦~~,也就是配置麻烦，其实用起来非常简单，前期主要先去学习一下基本的数据库建表，增删改查就没问题了
+​    当时连接数据库真的是麻烦~~,也就是配置麻烦，其实用起来非常简单，前期主要先去学习一下基本的数据库建表，增删改查就没问题了
 
 - 安装 mysql 模块
 
@@ -195,8 +189,6 @@ SELECT *FORM `shuoshuo` WHERE `id`=?
 'SELECT * FROM nodeuser where user = ?',[user]
 ```
 
-
-
 ### mysql.js
 
 放到自己的文件夹下面
@@ -254,7 +246,7 @@ router.('/reg',(req,res)=>{
     //?代表动态数据   id不管写什么都会自动增长，所以写了一个0 
     //  [] 动态的值 是以数组的形式出现的
     sql('INSERT INTO `nodeuser` {`id`, `username`,`pass`} ' ) VALUES (0,?,?）,[req.query.name,req.query.pass]，(err,data)=>{
-        
+
     });
 })
 ```
@@ -274,23 +266,22 @@ index.ejs
 //*****ajax提交到后台
 
 $.ajax({
-	url : '/reg',
-	type : 'get',
+    url : '/reg',
+    type : 'get',
     data : {
-		name : $().val(),
-		pass : $().val()
+        name : $().val(),
+        pass : $().val()
     },
     success : function(data){
-		console.log(data);
+        console.log(data);
     },
 });
 
 //**************************
 index.js里面响应js里的ajax
 sql(---------------------,(req,res)={
-	 res.json({
-		chenggong : '成功';
+     res.json({
+        chenggong : '成功';
     });
 })
-
 ```

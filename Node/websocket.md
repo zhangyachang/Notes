@@ -1,20 +1,14 @@
 [TOC]
 
-
-
-
-
 ## websocket
 
-​	就是不http /https协议了
+​    就是不http /https协议了
 
-​	而是 ws/wss协议
+​    而是 ws/wss协议
 
 服务器和浏览器  <==> 浏览器  双向通信  及时通讯
 
 websocket 服务器也有支持还是不支持  iis8以下的不支持的
-
-
 
 需要引入模块了,  安装
 
@@ -37,10 +31,6 @@ localhost:3000/socket.io/socket.io.js
 这个可能是连接好配置之后，io那个模块给前台发送的，用这个连接就可以了。
 ```
 
-
-
-
-
 **app.js**
 
 ```js
@@ -55,8 +45,8 @@ let io = ws(server); //所有的消息都会通过这个东西
 //connection 当打开前端页面的时候
 io.on('connection',socket=>{
     console.log(socket);  
-    
-    //发送消息的方法   参数 1.发送的名称 2.正式的内容
+
+    // 发送消息的方法   参数 1.发送的名称 2.正式的内容
     io.emit('wulv'，{name:'欢迎加入'});  //当监听到上面的东西时，就发送
 
     //监听
@@ -65,8 +55,6 @@ io.on('connection',socket=>{
     })
 });
 ```
-
-
 
 **html文件**
 
@@ -84,7 +72,7 @@ io.on('connection',socket=>{
 //用io来连接 第一个参数网址(/代表当前的根目录啥的)
 //在前台很难看出来
 //websocket 建立过程
-	1.通过http的链接方式进行链接 并且告诉服务器是要创建一个websocket链接
+    1.通过http的链接方式进行链接 并且告诉服务器是要创建一个websocket链接
     2.服务器 说 好的没问题
     3.正式建立 websocket链接
 
@@ -95,13 +83,9 @@ socket.on('wulv',(err,data)=>{
     console.log(data);
     //前台给后台发送
     socket.emit('xiexie',{name:'收到');
-   
+
 });
-
-
 ```
-
-
 
 在network的all里面查看一下那个东西
 
@@ -111,11 +95,7 @@ js的插件
 下面的都是一些 相互传递的东西
 ```
 
-
-
 #### 加入聊天室
-
-
 
 #### 退出聊天室
 
@@ -123,11 +103,9 @@ js的插件
 
 ```js
 socket.on('disconnect',()=>{
-    
+
 })
 ```
-
-
 
 **app.js代码**
 
@@ -150,8 +128,8 @@ io.on('connection', socket =>{
        socket.leave('lt');
        io.sockets.in('lt').emit('hello','欢迎离开聊天房间')
     });
-    
-    
+
+
     // io.emit() 发送消息的方法 1.发送的名称 2.内容
     /*io.emit('wulv' ,{ name:'欢迎加入' } );
      socket.on('xiexie',(data) => {
@@ -191,9 +169,7 @@ io.on('connection', function(socket){
 });
 ```
 
-
-
-前端页面**
+**前端页面**
 
 ```js
 // 当引入socket的时候会在window下添加一个 io 全局
@@ -257,10 +233,6 @@ function submit(){
 }
 ```
 
-
-
-
-
 ```js
 // 给单独的客户端发送信息？
 var io = io.listen(server);
@@ -268,8 +240,3 @@ io.clients[sessionID].send()
 
 如需广播消息，只需要在调用 emit 和 send 方法之前添加 broadcast 标记即可。广播的意思是向除发起广播之外的所有客户端发送消息。
 ```
-
-
-
-
-

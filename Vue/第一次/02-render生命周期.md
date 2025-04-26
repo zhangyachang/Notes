@@ -2,7 +2,7 @@
 
 ```js
 <div id="app">
-	<index></index>
+    <index></index>
 </div>
 var bb = Vue.component('index',{
     template:'<div>这里是index</div>'
@@ -26,5 +26,3 @@ new Vue({
     }
 })
 ```
-
-

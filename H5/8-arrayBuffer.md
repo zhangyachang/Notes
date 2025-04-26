@@ -150,7 +150,7 @@ reader.readAsArrayBuffer(files)
 
 **FileList** 对象 
 
-​        当用户通过 ***file 控件*** 选取文件后，这个控件的 this.files 属性值就是 FileList 对象。是个***类数组***，带上multiple 属性用户可选取多个文件，否则只能选择一个元素。
+​        当用户通过 ***file 控件*** 选取文件后，这个控件的 this.files 属性值就是 FileList 对象。是个**类数组**，带上multiple 属性用户可选取多个文件，否则只能选择一个元素。
 
 ```js
 <input type='file' multiple id='oInput'/>
@@ -232,7 +232,7 @@ function blogSlice( blob,start,end ){
     }else if( blob.mozSlice ){
         return blob.mozSlice(start,end)         
     }else{
-          return null
+          return null;
     }
 }
 ```

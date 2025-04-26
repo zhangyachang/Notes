@@ -5,13 +5,13 @@
 对比sql中的一些概念
 
 ```sql
-sql数据库			Mongodb数据库        说明
+sql数据库            Mongodb数据库        说明
 database            database            数据库
 table               collection          数据表/ 集合
 row                 document            数据记录行/ 文档
 index               index               索引
-table joins	                            mongodb不支持表的连接
-primary key          primary key 	    主键
+table joins                             mongodb不支持表的连接
+primary key         primary key        主键
 ```
 
 ## 配置和启动
@@ -26,7 +26,7 @@ mongo                  安装包下面的bin 设置全局变量
 ```js
 mongod 是服务端
 mongo 是客户端
-//开机命令 	后面的是路径会自动生成一堆好多东西
+//开机命令     后面的是路径会自动生成一堆好多东西
 mongod --dbpath D:\blog\mongoDB_dataBase
 // 再启动一个命令行 输入 
 mongo  // 就可以连接到数据库了
@@ -98,8 +98,6 @@ db.inventory.deleteMany({ status : "A" })
 db.inventory.deleteOne( { status: "D" })
 ```
 
-
-
 ## mongoose
 
 在blog文件夹下面打开命令行  安装mongoose
@@ -160,10 +158,7 @@ d1.save()
         console.log('插入失败');
         console.log(err);
     });
-
 ```
-
-
 
 ## 钩子
 
@@ -177,10 +172,6 @@ and 这种格式的东西
 UserModel.prototype  这个上面触发的函数
 也就是 文档实例调用的方法
 ```
-
-
-
-
 
 ## mongodb-compass
 

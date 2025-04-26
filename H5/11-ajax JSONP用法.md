@@ -2,8 +2,6 @@
 ajax jsonp用法
 ---
 
-
-
 ## ajax大概
 
  **ajax:**
@@ -16,36 +14,35 @@ ajax jsonp用法
 **ajax跨域:**
    【前端解决不了,后端解决】
 
-​	1    通过ajax发送一个url或数据，服务端接收到url或数据并去访问。把获取到的数据再返回到前端页面
-​	2  利用jsonp解决
+​    1    通过ajax发送一个url或数据，服务端接收到url或数据并去访问。把获取到的数据再返回到前端页面
+​    2  利用jsonp解决
 
 **GET和POST区别：**
 
 GET:
 
-​	更常用，更方便，性能好，明文发送数据，没有POST安全
-​	传输数据大小有限制
+​    更常用，更方便，性能好，明文发送数据，没有POST安全
+​    传输数据大小有限制
 
 **POST:**
 
-​	使用率相对较少，性能没有GET高，安全比GET稍微好一点
+​    使用率相对较少，性能没有GET高，安全比GET稍微好一点
 
-​	没有传输数据大小限制
+​    没有传输数据大小限制
 
 **GET和POST**
 
-​	根据是实际情况而定 ，接口允许用哪个就用哪个
-​	如果都允许，首先GET
-​	当遇到一个敏感数据或私密信息，那肯定是POST
+​    根据是实际情况而定 ，接口允许用哪个就用哪个
+​    如果都允许，首先GET
+​    当遇到一个敏感数据或私密信息，那肯定是POST
 
 **ajax不能在中文路径下运行**
 
-​	要服务器环境运行
-​	如果没有本地服务器的，建议用xampp服务器
-​	不会运行失败，省心
-​	是英文，不需要过多的操作
-​	一台电脑上集成服务器只需要安装一个就可，千万不要安装多个，否则会出现端口冲突
-
+​    要服务器环境运行
+​    如果没有本地服务器的，建议用xampp服务器
+​    不会运行失败，省心
+​    是英文，不需要过多的操作
+​    一台电脑上集成服务器只需要安装一个就可，千万不要安装多个，否则会出现端口冲突
 
 ## a标签的下载
 
@@ -63,15 +60,15 @@ GET:
 <a href="images/9.rar">下载压缩文件</a>
 ```
 
-**js ** 中的下载
+**js** 中的下载
 
 ```js
 点击下载
 oBox.onclick = function(){
-  	var a = document.createElement("a");
-  	a.href = "images/4.jpg";
-  	a.download = "自己取下载文件的名字";
-  	a.click();
+      var a = document.createElement("a");
+      a.href = "images/4.jpg";
+      a.download = "自己取下载文件的名字";
+      a.click();
 }
 ```
 
@@ -85,17 +82,18 @@ oBox.onclick = function(){
 //xhr.open("get","files/1.txt",true);
 //xhr.open("get","js/1.js",true);
 //xhr.open("get","files/books.xml",true);
-2.建立请求		xhr.open(type,url,boolean)	//type请求方式（Get or post） url(后台接口) bool(是否异步 true是异步，false则同步)
+2.建立请求        xhr.open(type,url,boolean)    //type请求方式（Get or post） url(后台接口) bool(是否异步 true是异步，false则同步)
 3.发送请求    xhr.send();
 xhr.onload = function(){}  //这种也行
-4.监听状态码   xhr.onreadystatechange = function () {
-	if(xhr.readyState === 4 && xhr.status === 200){
-		console.log("请求成功");
-		console.log(this.responseText);
+4.监听状态码   
+xhr.onreadystatechange = function () {
+    if(xhr.readyState === 4 && xhr.status === 200){
+        console.log("请求成功");
+        console.log(this.responseText);
         /!*var data = JSON.parse(this.responseText);
-		console.log(data.name);
-		console.log(data.age,data.sex);
-	}
+        console.log(data.name);
+        console.log(data.age,data.sex);
+    }
 }
 ```
 
@@ -137,18 +135,18 @@ xhr.onload = function(){}  //这种也行
 </body>
 ```
 
-**php后台处理 **
+**php后台处理**
 
 ```php
 <?php
-	header("content-type:text/html;charset='utf-8'");
+    header("content-type:text/html;charset='utf-8'");
 
-	$user = $_POST["name"];
-	$age = $_POST["age"];
-	$sex = $_POST["sex"];
-	//echo "您输入的用户名：".$user."; 您输入的年龄：".$age."; 您输入的性别是：".$sex;
+    $user = $_POST["name"];
+    $age = $_POST["age"];
+    $sex = $_POST["sex"];
+    //echo "您输入的用户名：".$user."; 您输入的年龄：".$age."; 您输入的性别是：".$sex;
 
-	echo "456789";
+    echo "456789";
 ?>
 ```
 
@@ -158,7 +156,7 @@ xhr.onload = function(){}  //这种也行
 
 ```js
 btn.onclick=function () {   
-	var user = input[0].value,
+    var user = input[0].value,
         age = input[1].value,
         sex = input[2].value;
     var data = "user="+user+"&age="+age+"&sex="+sex;
@@ -178,6 +176,7 @@ btn.onclick=function () {
         }
 }
 ```
+
 ##### 三、发送json数据
 
 ```js
@@ -192,8 +191,6 @@ for (var i in json){
 }
 ```
 
-
-
 ## JSONP
 
 我认为jsonp其实就是将这种数据发送到后台
@@ -204,13 +201,13 @@ oScript.src = 'http://tanzhouweb.com/php.php?jsonp=getData';
 document.body.appendChild(oScript);
 
 function getData(data){
-  	//在这里处理数据
+      //在这里处理数据
 }
 ```
 
 问号后面的jsonp就是后台接受的东西，然后getData是js中的函数名，也就是回调函数了吧
 
-**体会 **
+**体会**
 
 ```js
 这里面的src其他的都是数据
@@ -258,7 +255,7 @@ echo $val."(".json_encode($arr).")";
 2.但是很多时候不是通过标签形式播放音乐，而是通过js
 
 ```js
-//  file blob base64 document domString
+// file blob base64 document domString
 var xhr = new XMLHttpRequest();
 // web Audio api 固定类型 arrayBuffer
 xhr.responseType = 'arraybuffer';
@@ -269,7 +266,7 @@ xhr.onload = function () {
             //console.log( xhr.response ) 元始数据
             var buffer = xhr.response;
             var blob = new Blob([buffer],{type:'audio/mpeg'});
-           	指向内存地址
+            // 指向内存地址
             var url = window.URL.createObjectURL(blob); 
             var audio = document.createElement('audio');
             audio.src = url;
@@ -300,8 +297,6 @@ aCxt.decodeAudioData(xhr.response,function (buffer) {
 
 });
 ```
-
-
 
 ## 封装ajax
 
@@ -373,9 +368,7 @@ aCxt.decodeAudioData(xhr.response,function (buffer) {
 </script>
 ```
 
-
-
-**注意点 **
+**注意点**
 
 当使用正则判断的时候
 
@@ -384,7 +377,7 @@ aCxt.decodeAudioData(xhr.response,function (buffer) {
 var str = "get"; 
 var reg = /GET/ig;
 console.log(reg.test(str))  //true
-console.log(reg.test(str))	//false
+console.log(reg.test(str))    //false
 ```
 
 当没有g的时候
@@ -393,6 +386,5 @@ console.log(reg.test(str))	//false
 var str = "get"; 
 var reg = /GET/ig;
 console.log(reg.test(str))  //true
-console.log(reg.test(str))	//true
+console.log(reg.test(str))    //true
 ```
-

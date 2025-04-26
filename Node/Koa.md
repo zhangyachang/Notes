@@ -5,13 +5,13 @@ fs-extra     // 集成了fs
 koa-router   // 路由
 koa-static   // 静态资源
 koa-body     // post数据解析
-@koa/cors     // 跨域
+@koa/cors    // 跨域
 koa-session  //后台 session
 ```
 
-#Koa
+# Koa
 
-##安装
+## 安装
 
 ```js
 npm i -S koa
@@ -54,26 +54,24 @@ app.listen(3000);
 console.log('3000服务启动成功');
 ```
 
-##ctx中的属性
+## ctx中的属性
 
 ```js
 app.use(async (ctx,next)=>{
     ctx.body = '返回数据';  // 这是返回数据 和那个 res.write()差不多
     ctx.body += '  追加数据';
     ctx.body = '返回';  // 这个会覆盖 上面两条就无效了
-    
+
     ctx.request.url
     ctx.url  // 发送的url
     ctx.method // 请求方法
-    
+
     ctx.path // 路径
-   	ctx.status  // 状态码
+    ctx.status  // 状态码
     ctx.query // 请求信息
     ctx.type // 响应文档类型
 });
 ```
-
-
 
 ## 路由
 
@@ -119,8 +117,6 @@ router.get('/article',async (ctx,next)=>{
 });
 ```
 
-
-
 **动态路由**
 
 ```js
@@ -131,10 +127,6 @@ router.get('/product/:aid',async (ctx)=>{
 });
 ```
 
-
-
-
-
 ## 分模块
 
 把所有的路由都写到app.js里面会显得杂乱，特别多，所以可以分文件去处理
@@ -144,7 +136,7 @@ router.get('/product/:aid',async (ctx)=>{
 ```js
 const Koa = require('koa');
 const app = new Koa();
-const router = require('./router/index');  // 去引入自己写的路由
+const router = require('./router/index');  // 去引/入自己写的路由
 
 app
     .use(router.routes())
@@ -180,8 +172,6 @@ exports.getArticle = async function (ctx,next) {
     ctx.body = '<h1>article页面</h1>'
 };
 ```
-
-
 
 ## 设置静态目录
 
@@ -242,10 +232,7 @@ const koaStatic = require('koa-static');
 const path = require('path');
 
 app.use(koaStatic(path.join(__dirname,'/public')));  // 在这里设置就好了
-
 ```
-
-
 
 ## post数据解析
 
@@ -273,11 +260,9 @@ app.use(koaBody());
 ctx.request.body
 ```
 
-
-
 **解决跨域**
 
-**@koa/cors **
+**@koa/cors**
 
 ```js
 $ npm install @koa/cors@2 --save
@@ -289,8 +274,6 @@ const cors = require('@koa/cors');
 const app = new Koa();
 app.use(cors());
 ```
-
-
 
 ## cookie
 
@@ -308,8 +291,6 @@ ctx.cookies.set('username':username,{
 ctx.cookies.get("username"); // 获取
 ```
 
-
-
 ## session
 
 ```js
@@ -318,7 +299,7 @@ ctx.session.isNew
 
 ctx.session = null;  // 手动删除 过期
 app.keys = ['some secret hurr'];
- 
+
 const CONFIG = {
   key: 'koa:sess', /** (string) cookie key (default is koa:sess) */
   /** (number || 'session') maxAge in ms (default is 1 days) */
@@ -332,11 +313,9 @@ const CONFIG = {
   rolling: false, /** (boolean) Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. (default is false) */
   renew: false, /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/
 };
- 
+
 app.use(session(CONFIG, app));
 ```
-
-
 
 ## 文件上传
 
@@ -446,25 +425,13 @@ app.use(async (ctx) => {
 });
 
 app.listen(3000,()=>{
-	console.log(`服务启动成功`);
+    console.log(`服务启动成功`);
 });
 ```
 
-​	
+​    
 
-​	有一个问题啊，所有的后台服务都是一套代码，他是如何区分是不同的人访问的呢？
-
-
-
-
-
-
-
-
-
-
-
-
+​    有一个问题啊，所有的后台服务都是一套代码，他是如何区分是不同的人访问的呢？
 
 ## 原型 app.context
 

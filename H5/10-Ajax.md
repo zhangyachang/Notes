@@ -68,7 +68,7 @@ xhr.readyState
 ```js
 //post需要设置请求头（数据格式）
 //发送的数据需要放到send里
-xhr.open("post" , "url");
+xhr.open("post", "url");
 //设置请求头
 xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 xhr.send(data);

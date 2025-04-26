@@ -1,6 +1,6 @@
 # Node.js
 
-​	创建服务器的框架Express
+创建服务器的框架Express
 
 ## 基础知识
 
@@ -11,8 +11,6 @@ koa和express都是中间件类型的，也都可以想象成 洋葱模型
 
 express中间件感觉挺容易理解的，见到next才会向下执行，应该也是send会结束上下文
 ```
-
-
 
 ### 1.node目录的配置
 
@@ -119,7 +117,7 @@ app.use('/',require('./router/index'));
 http.createServer(app).listen(3000);
 ```
 
-### 4.views目录 
+### 4.views目录
 
 + 用来存放html模板文件
 
@@ -152,8 +150,6 @@ router.get('/a+b+/'.(req,res)=>{
 ```
 
 可以故意写错一下看一看正则规则
-
-
 
 ## 功能配置
 
@@ -212,17 +208,17 @@ ejs文件中的写法
 这里是header.ejs
 <% include hader.ejs %>
 <!-- 接收的方式 <%=  %>  -->
-    
+
 转义就是不解析标签
 <%= name %> 不解析标签
-    
+
 // 没有转义的 没有转义就是解析标签
 <%- name %> 解析标签
-    
+
 <!-- 主要是用来写js代码 -->
 
 <% for(var i = 0;i<6;i++){ %>
-	<p>1</p>
+    <p>1</p>
 <% } %>
 ```
 
@@ -254,8 +250,6 @@ router.get('/ejs', (req, res) => {
     res.render('news');
 });
 ```
-
-
 
 ### 2. 设置静态资源目录
 
@@ -294,11 +288,9 @@ app.use(bodyParser.json({limit:'50mb'}));
 
 ```js
 router.post('/reg',(req,res)=>{
-   	console.log(req.body);  //{name: 'aaa', pass : 'ffff'};
+       console.log(req.body);  //{name: 'aaa', pass : 'ffff'};
 })
 ```
-
-
 
 ### 4.三种获取请求参数
 
@@ -372,8 +364,6 @@ res.sendFile();
 res.status(500).send('Hello world');
 ```
 
-
-
 ### 6.cookie的操作
 
 ```js
@@ -416,11 +406,11 @@ res.clearCookie('login');  //清除cookie
 
 ### 7.session
 
-​	可以去看看http那里，cookie，session，token三种机制的区别。
+​    可以去看看http那里，cookie，session，token三种机制的区别。
 
-​	虽然session保存在服务器，对客户端是透明的，它的正常运行仍然需要客户端浏览器的支持。这是因为session需要使用cookie作为识别访问。http协议是无状态的，session不能依据http连接来判断是否为同一用户，因此服务器向客户端浏览器发送一个名为JSESSIONID的Cookie，它的值为该Session的id（也就是HttpSession.getId()的返回值）。Session依据该Cookie来识别是否为同一用户。
+​    虽然session保存在服务器，对客户端是透明的，它的正常运行仍然需要客户端浏览器的支持。这是因为session需要使用cookie作为识别访问。http协议是无状态的，session不能依据http连接来判断是否为同一用户，因此服务器向客户端浏览器发送一个名为JSESSIONID的Cookie，它的值为该Session的id（也就是HttpSession.getId()的返回值）。Session依据该Cookie来识别是否为同一用户。
 
-该Cookie为服务器自动生成的，它的maxAge属性一般为–1，表示仅当前浏览器内有效，并且各浏览器窗口间不共享，关闭浏览器就会失效。
+该Cookie为服务器自动生成的，它的maxAge属性一般为–1，表示仅当前浏览器内有效，并且各浏览器窗口间不共享，关闭浏览器就会失效
 
 因此同一机器的两个浏览器窗口访问服务器时，会生成两个不同的Session。但是由浏览器窗口内的链接、脚本等打开的新窗口（也就是说不是双击桌面浏览器图标等打开的窗口）除外。这类子窗口会共享父窗口的Cookie，因此会共享一个Session。
 
@@ -460,8 +450,8 @@ app.use(session({
 // 上面的那种是关闭浏览器结束会话
 
 app.use(session({
-	secret: '12345',
-   	name: 'testapp',   //这里的name值得是cookie的name，默认cookie的name是：connect.sid
+    secret: '12345',
+       name: 'testapp',   //这里的name值得是cookie的name，默认cookie的name是：connect.sid
     cookie: {maxAge: 80000 },  //设置maxAge是80000ms，即80s后session和相应的cookie失效过期
     resave: false,
     saveUninitialized: true,
@@ -518,8 +508,6 @@ router.post('/article',upload.fields([{ name: 'aaa', maxCount: 4 }, { name: 'bbb
 });
 ```
 
-
-
 ```js
 file 上传的文件的信息都保存在这个里面
 function(req, file, cb){}
@@ -571,13 +559,11 @@ cnpm i -S morgan
 require('morgan')
 ```
 
-
-
 ## 一些优化
 
 ### 1.路由分文件
 
-​	当项目越来越大的时候，有时候把所有的路由文件不好找到，所以可以把一项功能放到一个文件夹里面
+​    当项目越来越大的时候，有时候把所有的路由文件不好找到，所以可以把一项功能放到一个文件夹里面
 
 ```js
 router.use('/login', require('./router/login'));

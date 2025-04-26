@@ -2,8 +2,6 @@
 cookie
 ---
 
-
-
 ## cookie
 
 ## 一、什么是cookie
@@ -11,7 +9,6 @@ cookie
 1.访问网站的时候，浏览器可以通过cookie把数据存储在电脑上；
 
 2. cookie是一种存储数据的方式，存储在电脑上，只要设定合适存储时间，即使关掉浏览器下次访问也能拿取；
-
 
 3. 不同浏览器cookie存储位置不一样，不用域名cookie存储文件夹不一样
 
@@ -88,8 +85,8 @@ consol.log( document.cookie );
     function format(n) {
         return n<10?"0"+n:n;
     }
-</script>	
-</body>	
+</script>    
+</body>    
 ```
 
 **注意： **
@@ -97,8 +94,6 @@ consol.log( document.cookie );
 ```js
 [^1]  取反  不是1
 ```
-
-
 
 ## cookie的封装
 
@@ -111,7 +106,7 @@ consol.log( document.cookie );
 setCookie({
   fengyu : 666
 },5)
- 
+
 function setCookie(json,time) {
     var timer = new Date(Date.now()+time*365*24*60*60*1000).toUTCString();
     for(var key in json){

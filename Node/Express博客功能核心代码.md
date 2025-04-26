@@ -9,7 +9,7 @@
 'SELECT * FROM nodeuser where user = ?',[user],
 //插入数据
 'INSERT INTO nodeuser (id,user,pass) VALUES (0,?,?)',[user,pass],
-    
+
  res.render('index.ejs');   render是用来响应模板ejs的
 ```
 
@@ -79,7 +79,7 @@ router.post('/',(req,res)=>{
     md5 = crypto.createHash('md5');
 });
 //加密过程
-				加密   密码    编码格式
+                加密   密码    编码格式
 let newPass = md5.update(pass).digest('hex');
 ```
 
@@ -96,11 +96,7 @@ admin  数据库插入的时候修改一下插入代码
 req.session.admin = Number(data[0]['admin']);
 ```
 
-
-
 ### 8.删除
-
-
 
 ### 9.修改用户资料
 
@@ -112,10 +108,6 @@ req.session.admin = Number(data[0]['admin']);
 req.query这个来接收
 ```
 
-
-
-
-
 ### 10.提交文章
 
 后台好多逻辑都是好多的判断，来判断用户的一些误操作
@@ -124,8 +116,6 @@ req.query这个来接收
 
 **2.数据库代码中的err一定要判断一下，因为如果是错误了就不会更新数据了**
 
-
-
 ### 11.发布文章
 
 新建一个表来单独的保存文章内容
@@ -133,7 +123,7 @@ req.query这个来接收
 ```sql
 CREATE TABLE `node`.`article`(
  `id`     INT(11)  NOT NULL AUTO_INCREMENT,
- `title` varchar(64)	 NOT NULL ,
+ `title` varchar(64)     NOT NULL ,
   `tag` varchar(64) NOT NULL ,
   `author` varchar(64) NOT NULL ,
   `content` longtext NOT NULL ,
@@ -166,7 +156,7 @@ router.post('/article',(req, res)=>{
 });
 ```
 
-###12.查询每一篇文章
+### 12.查询每一篇文章
 
 ```js
 router.get('/article/:id.html',(req,res) => {
@@ -257,7 +247,7 @@ if(data.length === 0){
 CREATE TABLE `node`.`articlepinglun`(
  `id`     INT(11)  NOT NULL AUTO_INCREMENT,
     //保存用户的id
- `uid` varchar(64)	 NOT NULL ,
+ `uid` varchar(64)     NOT NULL ,
     //文章id
   `wid` varchar(64) NOT NULL ,
   `content` varchar(64) NOT NULL ,
@@ -299,21 +289,19 @@ router.get('/article/list-:page.html',(req,res)=>{
     }) 
 });
 router('/article/:id.html',(req,res)=>{
-    
-})
+
+});
 ```
 
 前台
 
 ```html
 <div>
-	<% for(var i=0;i<alldata/2;i++){ %>
- 		<a href="/article/list-<%= i+1 %>.html">第<%= i+1 %>页</a>
-	<% } %>
+    <% for(var i=0;i<alldata/2;i++){ %>
+         <a href="/article/list-<%= i+1 %>.html">第<%= i+1 %>页</a>
+    <% } %>
 </div>
 ```
-
-
 
 ### 16.访问量
 
@@ -321,23 +309,23 @@ router('/article/:id.html',(req,res)=>{
 
 就是数据库查询的时候，每一次访问就让他+1，但是不可能让他无限的增加，
 
-​	可以记录ip
+​    可以记录ip
 
-​	可以给一个用户发送一个期限为一天的cookie，然后就让它+1(评论点赞什么的也可以这样来做)
+​    可以给一个用户发送一个期限为一天的cookie，然后就让它+1(评论点赞什么的也可以这样来做)
 
 ### 17.瀑布流
 
-​	瀑布流的原理
+​    瀑布流的原理
 
-​	这个原理就是下拉多少距离之后然后再请求分页的那种，然后再上传到前台
+​    这个原理就是下拉多少距离之后然后再请求分页的那种，然后再上传到前台
 
 ### 18.二级导航
 
-​	这个涉及到数据库比较深了
+​    这个涉及到数据库比较深了
 
 ```mysql
 CREATE TABLE `node`.`nav`(
-	`id` INT(11)
+    `id` INT(11)
     `title`
     `navid` //保存着第几个导航
     `leve` //保存着导航的级别.
@@ -353,7 +341,7 @@ CREATE TABLE `node`.`nav`(
 ```mysql
 CREATE TABLE `node`.`nav`(
  `id`     INT(11)  NOT NULL AUTO_INCREMENT,
- `title` varchar(64)	 NOT NULL ,
+ `title` varchar(64)     NOT NULL ,
   `navid` varchar(64) NOT NULL ,
   `leve` varchar(64) NOT NULL ,
   PRIMARY KEY (`id`)
@@ -361,16 +349,14 @@ CREATE TABLE `node`.`nav`(
 ENGINE = InnoDB CHARSET=utf8;
 ```
 
-
-
 ```js
 // 查询数据多条件的还可以这样
 sql('select * from nav where leve = 1',(err,data)=>{
     for(let i in data){
-    	sql('select * from nav where leve = 2 and navid = ?',[data[i]['navid']],(err,data)=>{
-    		//想要的格式
+        sql('select * from nav where leve = 2 and navid = ?',[data[i]['navid']],(err,data)=>{
+            //想要的格式
             [第一个导航，[第一个导航的子导航，子导航，子导航]]
-		})
+        })
     }
 })
 ```
@@ -411,8 +397,6 @@ module.exports = function (cb) {
 
 jsonp能做到的事情 ajax也全都可以做到，这么说对吗？
 
-
-
 ### 19.搜索功能
 
 前台
@@ -435,19 +419,15 @@ router.get('/search',(req,res)=>{
 });
 ```
 
-
-
 ### 20.富文本编辑器
-
-
 
 ### 21. buffer上传头像
 
 buffer.js
 
-​	把我们的数据进行数据类型的转换的
+​    把我们的数据进行数据类型的转换的
 
-​	就是用来操作数据类型的
+​    就是用来操作数据类型的
 
 ```js
 // 读取文件的时候，如果不设置那个utf-8 他就是一个十六进制 或者说二进制的数
@@ -485,7 +465,7 @@ dirtype = '2' 当前这个文件是目录
         <p data-dirtype="1" onclick="next()"><%= dir[i] %></P>
     <% }else{ %>
         <p data-dirtype="2" onclick="next()"><%= data[i] %> </p>
-	<% } %>        
+    <% } %>        
 <% } %>
 ```
 
@@ -599,7 +579,7 @@ router.post('/views',(req,res)=>{
             }
         })
     }
-    
+
     function back(_this) {
         console.log(_this.getAttribute('data-dirname').substring(0,5));
         $.ajax({
@@ -644,13 +624,11 @@ router.post('/views',(req,res)=>{
 </body>
 ```
 
-
-
 ### 23.爬虫
 
-​	说的简单点就是服务器端的ajax
+​    说的简单点就是服务器端的ajax
 
-​	服务器端的请求，去请求别的数据
+​    服务器端的请求，去请求别的数据
 
 **小例子1**
 
@@ -677,15 +655,15 @@ http.get('http://nodejs.cn/',function (res) {
 
 ```js
 const http = rquire('http')，
-	https = requires('https'),
+    https = requires('https'),
 options = {
     hostname : 'node.cn',   //不带http
-    psth : '/api/',			//主域名之后的
-    post ： '80',   		//端口 默认的80
+    psth : '/api/',            //主域名之后的
+    post ： '80',           //端口 默认的80
     headers:{   //我们自己弄的话，他的默认参数有的就不是那种了 设置一下编码格式
-    	//设置编码格式  属性必须带引号了
-    	"Content-Length":"utf-8",
-	}
+        //设置编码格式  属性必须带引号了
+        "Content-Length":"utf-8",
+    }
 }
 
 const fs = require('fs');
@@ -743,4 +721,3 @@ https.get('https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3
     })
 });
 ```
-
