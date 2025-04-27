@@ -1,6 +1,6 @@
 几种经常用到的UI组件库
 
-##ElementUI
+## ElementUI
 
 ```js
 这个主要是PC端的组件
@@ -19,8 +19,6 @@ Vue.use(ElementUI)
 插件 挂载属性    Vue.prototype.$axios = axios    this.$axios.get('/')
 ```
 
-
-
 ## Mint UI
 
 ```js
@@ -35,41 +33,15 @@ import Mint from 'mint-ui';
 Vue.use(Mint);
 ```
 
-
-
-
-
 ## Mui
 
 ```js
-
 官网  http://dev.dcloud.net.cn/mui/
 不是基于 vue的 是基于css js的
 ```
-
-
-
-
 
 ## Vux
 
 ```js
 这个插件还挺好的
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

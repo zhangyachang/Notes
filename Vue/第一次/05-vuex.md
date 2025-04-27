@@ -117,7 +117,7 @@ const actions = {
     console.log(a.commit('jian'))
   }
 }
-// 相当于 vue里面的computed的作用 作用于state 过滤操作...
+// 相当于 vue里面的computed的作用 作用于state 过滤操作...，计算属性
 const getters = {
   guolv (state) {
     /* return state.age.filter( function (i) {
@@ -135,7 +135,6 @@ export default new Vuex.Store({
   actions,
   getters
 })
-
 ```
 
 **App.vue**
@@ -192,4 +191,3 @@ export default {
 }
 </script>
 ```
-

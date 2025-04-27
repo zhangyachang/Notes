@@ -2,15 +2,15 @@
 
 ## Vue.extend
 
-​	**参数：**
+​    **参数：**
 
-​	`{Object} options`
+​    `{Object} options`
 
-​	**用法**
+​    **用法**
 
-​	使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
+​    使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
 
-​	`data` 选项是特例，需要注意 - 在 `Vue.extend()` 中它必须是函数
+​    `data` 选项是特例，需要注意 - 在 `Vue.extend()` 中它必须是函数
 
 ```html
 <div id="mount-point"></div>
@@ -53,19 +53,17 @@ let extend = Vue.extend({
 new extend().$mount('#app');  //挂载
 ```
 
-
-
 ## Vue.nextTick
 
-​	**参数**
+​    **参数**
 
-​	`{Function} [callback]`
+​    `{Function} [callback]`
 
-​	`{Object}[content]`
+​    `{Object}[content]`
 
-​	**用法**： 
+​    **用法**： 
 
-​	在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。 
+​    在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。 
 
 ```js
 // 修改数据
@@ -81,23 +79,21 @@ Vue.nextTick()
   })
 ```
 
-
-
 ## Vue.set (target,key,value)
 
-​	**参数**： 
+​    **参数**： 
 
-​	`{Object | Array} target`
-	`{string | number} key`
-	`{any} value`
+​    `{Object | Array} target`
+    `{string | number} key`
+    `{any} value`
 
-​	**返回值** 设置的值
+​    **返回值** 设置的值
 
-​	**用法** 设置的值
+​    **用法** 设置的值
 
-​	向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。它必须用于向响应式对象上添加新属性，因为 Vue 无法探测普通的新增属性 (比如 `this.myObject.newProperty = 'hi'`) 
+​    向响应式对象中添加一个属性，并确保这个新属性同样是响应式的，且触发视图更新。它必须用于向响应式对象上添加新属性，因为 Vue 无法探测普通的新增属性 (比如 `this.myObject.newProperty = 'hi'`) 
 
-​	**注意**对象不能是 Vue 实例，或者 Vue 实例的根数据对象。 
+​    **注意**对象不能是 Vue 实例，或者 Vue 实例的根数据对象。 
 
 ```js
 new Vue({
@@ -114,35 +110,31 @@ new Vue({
 })
 ```
 
-
-
 ## Vue.delete(target,key)
 
-​	**参数**
+​    **参数**
 
-​	`{Object | Array} target`
+​    `{Object | Array} target`
 
-​	`{string | number} key/index`
+​    `{string | number} key/index`
 
-​	**用法**
+​    **用法**
 
-​	删除对象的属性。如果对象是响应式的，确保删除能触发更新视图。这个方法主要用于避开Vue不能检测到属性被删除的限制，但是你应该很少会使用它。
+​    删除对象的属性。如果对象是响应式的，确保删除能触发更新视图。这个方法主要用于避开Vue不能检测到属性被删除的限制，但是你应该很少会使用它。
 
-​	**注意** 目标对象不能是一个 Vue 实例或 Vue 实例的根数据对象。 
-
-
+​    **注意** 目标对象不能是一个 Vue 实例或 Vue 实例的根数据对象。 
 
 ## Vue.directive
 
-​	**参数**
+​    **参数**
 
-​	`{string} id`
+​    `{string} id`
 
-​	`{Function | Object} [definition]`
+​    `{Function | Object} [definition]`
 
-​	**用法**
+​    **用法**
 
-​	注册或获取全局指令
+​    注册或获取全局指令
 
 ```js
 // 注册
@@ -172,8 +164,8 @@ var myDirective = Vue.directive('my-directive')
 
 ```js
 Vue.directive('dream',function (el,bind) {
-	console.log(el);  // 这个是绑定的元素
-	console.log(bind)  // 这个是这个指令本身吧
+    console.log(el);  // 这个是绑定的元素
+    console.log(bind)  // 这个是这个指令本身吧
 });
 ```
 
@@ -200,21 +192,17 @@ Vue.directive('chang',{
 app.$destroy()
 ```
 
-
-
-
-
 ## Vue.fillter
 
-​	**参数：**
+​    **参数：**
 
-​	`{string} id`
+​    `{string} id`
 
-​	`{Function} [definition]`
+​    `{Function} [definition]`
 
-​	**用法**
+​    **用法**
 
-​	注册或获取全局过滤器
+​    注册或获取全局过滤器
 
 ```js
 // 注册
@@ -226,25 +214,21 @@ Vue.filter('my-filter', function (value) {
 var myFilter = Vue.filter('my-filter')
 ```
 
-
-
 ## Vue.component
 
-​	**参数：**
+​    **参数：**
 
-​	`{string} id`
+​    `{string} id`
 
-​	`{Function | Object} [definition]`
+​    `{Function | Object} [definition]`
 
-​	**用法**
+​    **用法**
 
-​	安装 Vue.js 插件。如果插件是一个对象，必须提供 `install` 方法。如果插件是一个函数，它会被作为 install 方法。install 方法调用时，会将 Vue 作为参数传入。 
+​    安装 Vue.js 插件。如果插件是一个对象，必须提供 `install` 方法。如果插件是一个函数，它会被作为 install 方法。install 方法调用时，会将 Vue 作为参数传入。 
 
-​	当 install 方法被同一个插件多次调用，插件将只会被安装一次。 
+​    当 install 方法被同一个插件多次调用，插件将只会被安装一次。 
 
-
-
-​	
+​    
 
 ```js
 // 注册组件，传入一个扩展过的构造器
@@ -257,41 +241,35 @@ Vue.component('my-component', { /* ... */ })
 var MyComponent = Vue.component('my-component')
 ```
 
-
-
 ## Vue.use
 
-​	**参数：**
+​    **参数：**
 
-​	`{Object | Function} plugin`
+​    `{Object | Function} plugin`
 
-​	**用法：**
+​    **用法：**
 
-​	注册或获取全局组件。注册还会自动使用给定的     `id`设置组件的名称 
-
-
+​    注册或获取全局组件。注册还会自动使用给定的     `id`设置组件的名称 
 
 ## Vue.mixin
 
-​	**参数**
+​    **参数**
 
-​	`{Object} mixin`
+​    `{Object} mixin`
 
-​	**用法：**
+​    **用法：**
 
-​	全局注册一个混入，影响注册之后所有创建的每个 Vue 实例。插件作者可以使用混入，向组件注入自定义的行为。**不推荐在应用代码中使用**。 
-
-
+​    全局注册一个混入，影响注册之后所有创建的每个 Vue 实例。插件作者可以使用混入，向组件注入自定义的行为。**不推荐在应用代码中使用**。 
 
 ## Vue.compile
 
-​	**参数：**
+​    **参数：**
 
-​	`{string} template`
+​    `{string} template`
 
-​	**用法**
+​    **用法**
 
-​	在 render 函数中编译模板字符串。**只在独立构建时有效** 
+​    在 render 函数中编译模板字符串。**只在独立构建时有效** 
 
 ```js
 var res = Vue.compile('<div><span>{{ msg }}</span></div>')
@@ -305,13 +283,11 @@ new Vue({
 })
 ```
 
-
-
 ## Vue.version
 
-​	**细节**：提供字符串形式的 Vue 安装版本号。这对社区的插件和组件来说非常有用，你可以根据不同的版本号采取不同的策略。 
+​    **细节**：提供字符串形式的 Vue 安装版本号。这对社区的插件和组件来说非常有用，你可以根据不同的版本号采取不同的策略。 
 
-​	**用法**： 
+​    **用法**： 
 
 ```js
 var version = Number(Vue.version.split('.')[0])
@@ -324,4 +300,3 @@ if (version === 2) {
   // Unsupported versions of Vue
 }
 ```
-
