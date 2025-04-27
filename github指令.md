@@ -7,7 +7,7 @@ title: github指令
 * 集中式，完整的代码库在中央服务器，每次上班都需要重新下载一下当前的版本,当成一个图书馆，每次借书，完成工作之后还书，最大的毛病应该就是必须联网才能工作。
 
 * 分布式，没有"中央服务器"每一个人的代码都是一个完整的代码库，这样工作的时候就不需要联网了
-
+  
   github,代码的托管平台，全世界的代码仓库。
 
 ### 设置用户名邮箱
@@ -26,7 +26,7 @@ git config --global user.name "Sallenkey"
 git config --global user.email "xxx@163.com"
 ```
 
- ### 初始化仓库
+### 初始化仓库
 
 使用`git init`
 
@@ -44,7 +44,7 @@ git config --global user.email "xxx@163.com"
 ### 版本回退
 
 * `HEAD`指向的版本就是当前版本的，因此Git允许我们在版本的历史之间穿梭，使用命令
-
+  
   `git reset --hard commit_id`
 
 * 穿梭前，用`git log`可以查看提交历史（commit_id），可以确定要回退到哪个版本
@@ -52,7 +52,7 @@ git config --global user.email "xxx@163.com"
 * 要重返未来，用`git reflog`查看历史命令，以便确定要回到未来的哪个版本
 
 * `git log --pretty=oneline` 将历史信息，一行显示
-
+  
   ```js
   git reset --hard HEAD^ 指针，返回上一次
   ```
@@ -237,21 +237,21 @@ $ git tag -a v-1.0.0 -m "第二次tag" cf1e9dee085dd2138b1ab83704e9bd521e3d08b1
 * 删除标签`git tag -d <tagName>`
 
 * 如果要推送某个标签到远程，使用命令`git push origin <tagname>`
-
+  
   或者一次性推送所有尚未推送到远程的标签`git push origin --tags`
 
 * 如果标签已经推送到远程，需要删除远程标签：先从本地删除
-
+  
   ```js
   $git tag -d <tagName>
   ```
-
+  
   然后删除远程库，使用命令push，但是格式如下
-
+  
   ```js
   $git push origin :regs/tags/<tagName>
   ```
-
+  
   需要查看远程标签是否删除，登录GitHub查看
 
 ### 配置Git命令别名
@@ -259,8 +259,6 @@ $ git tag -a v-1.0.0 -m "第二次tag" cf1e9dee085dd2138b1ab83704e9bd521e3d08b1
 我们只需要敲一行命令，告诉Git，以后`st`就表示`status`
 
 `git config --global alias.st status`
-
-
 
 ```js
 /全局配置用户名和邮箱
@@ -279,24 +277,20 @@ $ls 查看当前目录
 $ls -a 可以查看隐藏文件
 ```
 
-
-
 ```js
 git init 初始化吧 自己的理解创建一个 那个框框
 git add . 放到暂存区
-git commit -m "提交状态信息"   放到分支     	branch分支
+git commit -m "提交状态信息"   放到分支         branch分支
 git log 查看记录
 $ git remote add origin git@github.com:zzz111111/goudan.git   关联本地仓库和远程仓库
 $ git pull origin master 拉下来  先看看和远程仓库的一样不一样 
-$ git push origin master	把我本地的master分支 推送到远程代码仓库master     yes  第一次使用可能要确定
+$ git push origin master    把我本地的master分支 推送到远程代码仓库master     yes  第一次使用可能要确定
 关联后，使用命令git push -u origin master第一次推送master分支的所有内容
-$ ssh-keygen -t rsa -C "937741304@qq.com"		先生成秘钥然后在复制到github上面
+$ ssh-keygen -t rsa -C "937741304@qq.com"        先生成秘钥然后在复制到github上面
 先  pull再 add        先pull
-	git pull 
+    git pull 
 $git pull origin master先更新在推送的感觉 就是如果其他人先推了  你就先下载下来 可能是下载下来 然后再推
 ```
-
-
 
 ```js
 /报错信息一
@@ -306,17 +300,11 @@ fatal: refusing to merge unrelated histories
 git pull origin master --allow-unrelated-histories
 ```
 
-
-
-
-
 小问题去试验
 
 ```js
 https://blog.csdn.net/HeatDeath/article/details/79501748
 ```
-
-
 
 ### 忽略不上传的文件
 
@@ -333,8 +321,6 @@ git add -A
 然后再 commit 即可。
 ```
 
-
-
 ### 在不同的分支中更新同样的代码
 
 ```git
@@ -343,4 +329,3 @@ git add -A
 切换到想要修改的分支之下
 git cherry-pick commitid 就会更新
 ```
-

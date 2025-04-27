@@ -57,4 +57,3 @@ $ cd pm2
 $ npm install  # 或者 npm install --dev ，如果devDependencies 没有安装
 $ npm test
 ```
-

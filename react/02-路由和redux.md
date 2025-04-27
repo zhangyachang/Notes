@@ -2,9 +2,9 @@
 
 ### 1. 准备工作
 
-​	安装  cnpm i react-router-dom -S
+​    安装  cnpm i react-router-dom -S
 
-​	去github中react-router中查看官方文档
+​    去github中react-router中查看官方文档
 
 ```js
 // 这一个简单的中文文档写的不错，有解析的那种，nice
@@ -16,45 +16,45 @@ https://www.jianshu.com/p/97e4af32811a
 ```js
 路由作用
 react-router
-	提供了一些router的核心api，静态的
-    	Router，Route，Switch等，但是他没有提供dom操作进行跳转的api
+    提供了一些router的核心api，静态的
+        Router，Route，Switch等，但是他没有提供dom操作进行跳转的api
 react-router-dom
-	提供了BrowserRouter，Router，Link等api，动态的
-    	我们可以通过dom的事件控制路由
+    提供了BrowserRouter，Router，Link等api，动态的
+        我们可以通过dom的事件控制路由
 BrowserserRouter路由和HashRouter路由
-	是路由的基本
+    是路由的基本
     就像路由器一样去管理网络及给每个接入进来的用户分发ip
     是一个大容器 包裹着路由
     HashRouter它是通过hash值来对路由进行控制。如果你使用HashRouter，你的路由就会默认有 /#/
-    BrowserRouter它的原理是使用HTML5 history API(pushState，replaceState，popState)来使你的内容随着		url动态改变的，如果放到二级目录下给BrowserRouter增加 basename 属性
+    BrowserRouter它的原理是使用HTML5 history API(pushState，replaceState，popState)来使你的内容随着url动态改变的，如果放到二级目录下给BrowserRouter增加 basename 属性
 Switch
-	会用来包裹Route，它里面不能放其他html元素，用来只显示一个元素
+    会用来包裹Route，它里面不能放其他html元素，用来只显示一个元素
 Route
-	控制路径对应显示的路由
+    控制路径对应显示的路由
     标签属性有exact、path、以及component
-    	exact是严格匹配，控制匹配到/路径时不会在继续向下匹配（？？？这个是对的吗）
-		path是标识路由的路径
-        	/path/:id路由参数
+        exact是严格匹配，控制匹配到/路径时不会在继续向下匹配（？？？这个是对的吗）
+        path是标识路由的路径
+            /path/:id路由参数
             component则表示路径对应显示的组件
 Link和NavLink
-	两者都是可以控制路由跳转的
+    两者都是可以控制路由跳转的
     Link标签有to属性
-    	to可以接受一个string或者一个object，来控制url
+        to可以接受一个string或者一个object，来控制url
     NavLink它可以为当前选中的路由设置类名、样式以及回调函数等
     <NavLink to="/news" exact activeClassName="aaa" ></NavLink>
 Redirect
-	重定向
+    重定向
     属性 from="" to="/"
-	404
+    404
 params与query
-	this.props.match 来获取路由(/news/list123)参数
+    this.props.match 来获取路由(/news/list123)参数
     可以通过node的
     模块来获取路由（/news/list?name=aa&age=12）参数
 ```
 
 ```js
 1. 通过js跳转
-	<redirect />
+    <redirect />
 
 2. 子路由的嵌套
 render={(props) => {
@@ -67,16 +67,16 @@ render={(props) => {
                component={aa}
            },
            {
-           		……
+                   ……
            }
        ];
 通过map循环生成this.props.routes.map((item, index) => {
     return (
-    	<Route
-        	key={index}
-        	path={item.path}
-        	exact={item.exact}
-        	component={item.component}
+        <Route
+            key={index}
+            path={item.path}
+            exact={item.exact}
+            component={item.component}
         />
     )
 })
@@ -97,9 +97,7 @@ import Prototypes from "prop-types"
 可以做一个路由的小练习，打包并发布到服务器去检查看一下
 ```
 
-
-
-###3.开始使用
+### 3.开始使用
 
 #### 1. 入门
 
@@ -117,12 +115,12 @@ class App extends Component {
       <Router> // 都要放到这个里面
         <div>
           <div className='nav'>
-        	{/*就是a标签*/}
+            {/*就是a标签*/}
               <NavLink to='/'>首页</NavLink>
               <NavLink to='/news'>新闻</NavLink>
               <NavLink to='/game'>游戏</NavLink>
           </div>
-        	{/*Route是用来匹配url路径并用来承载dom节点的*/}
+            {/*Route是用来匹配url路径并用来承载dom节点的*/}
           <Route exact path='/' component={Home} />
           <Route path='/news' component={News} />
           <Route path='/game' component={Game} />  
@@ -150,8 +148,6 @@ import {Switch} from 'react-router-dom'
     <Route component={Not404} />
 </Switch>
 ```
-
-
 
 #### 3. 路由传参
 
@@ -245,11 +241,11 @@ class News extends Component {
     return (
       <div>
         <h1>News页面</h1>
-        
+
         <ul>
             重中之重 重点
             ####这里的链接要使用一级路由的前面的部分，要不然根本进不来这里####
-            
+
           <li><Link to={'/news/newsDetail?serch=111&name=aaa'}>新闻列表111</Link></li>
           <li><Link to={'/news/newsDetail?search=222&name=bbb'}>新闻列表222</Link></li>
           <li><Link to={'/news/newsDetail/?search=333'}>新闻列表333</Link></li>
@@ -264,10 +260,10 @@ class News extends Component {
 
 #### 5. 路由模块化
 
-​	在src目录下新建一个router的文件夹，把router.js放进去
+在src目录下新建一个router的文件夹，把router.js放进去
 
 ```js
-<Route > // 这个里面是不能传参给组件的
+<Route >  // 这个里面是不能传参给组件的
 <News />  // 只有这种实际的组件才能传过去吧
 ```
 
@@ -323,7 +319,7 @@ App.js
       <NavLink to='/news'>新闻</NavLink>
       <NavLink to='/game'>游戏</NavLink>
     </div>
-    
+
     <Switch>
       {
         routers.map((item, index) => {
@@ -365,13 +361,13 @@ news
 ```jsx
 <div>
   <h1>News页面</h1>
-  
+
   <ul>
     <li><Link to={'/news/newsDetail?search=111&name=aaa'}>新闻列表111</Link></li>
     <li><Link to={'/news/newsDetail?search=222&name=bbb'}>新闻列表222</Link></li>
     <li><Link to={'/news/newsDetail/?search=333'}>新闻列表333</Link></li>
   </ul>
-  
+
   <Switch>
     {
       this.props.routes.map((item, index) => {
@@ -398,29 +394,27 @@ news
 </div>
 ```
 
-
-
-##二、Redux
+## 二、Redux
 
 ### 1.准备工作
 
-####1 .插件
+#### 1 .插件
 
-​	安装redux  cnpm i -S redux
+​    安装redux  cnpm i -S redux
 
-​	在react中使用redux  react-redux
+​    在react中使用redux  react-redux
 
-####2.调试工具
+#### 2.调试工具
 
-​	谷歌里面有  redux 的
+​    谷歌里面有  redux 的
 
-​	还有一个 react 组件也是的
+​    还有一个 react 组件也是的
 
 #### 3.概念
 
 ```js
 redux的概念
-	专注于状态管理 vuex也是
+    专注于状态管理 vuex也是
     是个独立的库，跟react没关系，vue，angular也可以用redux
     整体的只有一个状态对象，单向数据流处理
     核心概念 store state action reducer
@@ -428,20 +422,18 @@ redux的概念
 redux的基本原理使用
 redux和react结合使用
 调试工具
-	redux-devtools-extension
+    redux-devtools-extension
 中间件处理异步操作
 react-redux
 配置装饰器
-	babel-plugin-transform-decorators-legacy
+    babel-plugin-transform-decorators-legacy
 ```
 
-
-
-###2. 开始使用redux
+### 2. 开始使用redux
 
 可以去查看官网上面去查看
 
-####1. 入门小例子
+#### 1. 入门小例子
 
 ```js
 // redux/redux.js
@@ -492,7 +484,7 @@ store.dispatch({ type: 'DECREMENT' });
 ##  重点 使用 subscribe订阅render函数，每次发布完就去重新渲染
 ```
 
-####2.redux和react相结合
+#### 2.redux和react相结合
 
 ```js
 如果想要在其他组件里面使用，肯定是需要把上面的那个小案例的那种导出去
@@ -557,8 +549,6 @@ store.subscribe(render)
 render();
 ```
 
-
-
 ```js
 // 其他组件需要修改状态 就dispatch之后的action就行了 
 // 这边其实就是组件传值 改变之后需要订阅一个重新渲染页面的函数
@@ -578,15 +568,13 @@ class App1 extends Component {
 export default App1;
 ```
 
-
-
-###3.中间件
+### 3.中间件
 
 #### 1.redux-thunk
 
-​	中间件封装了很多实用的方法
+​    中间件封装了很多实用的方法
 
-​	redux 处理异步 那么就需要用到 redux-thunk
+​    redux 处理异步 那么就需要用到 redux-thunk
 
 ```js
 cnpm i -S redux-thunk  
@@ -626,13 +614,11 @@ export function addAsync() {
 }
 ```
 
-
-
-#### 2. 谷歌调试工具	
+#### 2. 谷歌调试工具
 
 调试工具  vue ---> devtools   vuex  devtools
 
-​	react devtools redux devtools
+​    react devtools redux devtools
 
 #### 3.使用react-redux
 
@@ -683,8 +669,6 @@ ReactDOM.render(
 );
 ```
 
-
-
 **react-redux** 优化代码
 
 ```jsx
@@ -719,13 +703,10 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
 //********************************************
 
 
-
-
-在其他组件中就可以直接去调用使用redux中的 数据 和 action函数了 了
+在其他组件中就可以直接去调用使用redux中的 数据 和 action函数了了
 // App.js
 // 连接器
 import {connect} from 'react-redux'
@@ -763,7 +744,7 @@ export default connect(
             type="button"
             defaultValue={'异步增加坦克炮'}
             onClick={this.props.addCannonAsync}
-		/>
+        />
 </div>
 ```
 

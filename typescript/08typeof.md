@@ -1,7 +1,5 @@
 # Typeof 类型操作符
 
-
-
 ## typeof 类型操作符
 
 JavaScript 本身就有 `typeof` 操作符，你可以在表达式上下文中使用：
@@ -10,8 +8,6 @@ JavaScript 本身就有 `typeof` 操作符，你可以在表达式上下文中�
 // Prints "string"
 console.log(typeof "Hello world");
 ```
-
-
 
 而 TypeScript 添加的 `typeof` 方法可以在类型上下文（type context）中使用，用于获取一个变量或者属性的类型。
 
@@ -49,14 +45,12 @@ function f() {
   return { x: 10, y: 3 };
 }
 type P = ReturnType<typeof f>;
-                    
+
 // type P = {
 //    x: number;
 //    y: number;
 // }
 ```
-
-
 
 ## 限制
 
@@ -70,8 +64,6 @@ function msgBox(msg: string) {
 }
 ```
 
-
-
 ```ts
 // Meant to use = ReturnType<typeof msgbox>
 let shouldContinue: typeof msgbox("Are you sure you want to continue?");
@@ -84,8 +76,6 @@ let shouldContinue: typeof msgbox("Are you sure you want to continue?");
 ReturnType<typeof msgbox>
 ```
 
-
-
 ## 对对象使用 typeof
 
 我们可以对一个对象使用 `typeof`
@@ -95,12 +85,10 @@ const person = { name: "kevin", age: "18" }
 type Kevin = typeof person;
 
 // type Kevin = {
-// 		name: string;
-// 		age: string;
+//         name: string;
+//         age: string;
 // }
 ```
-
-
 
 ## 对函数使用 typeof
 
@@ -114,8 +102,6 @@ function identity<Type>(arg: Type): Type {
 type result = typeof identity;
 // type result = <Type>(arg: Type) => Type
 ```
-
-
 
 ## 对 enum 使用 typeof
 
@@ -165,7 +151,7 @@ const a: result = {
 result 类型类似于：
 
 // {
-//	"No": number,
+//    "No": number,
 //  "YES": number
 // }
 ```

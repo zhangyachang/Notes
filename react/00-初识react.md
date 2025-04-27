@@ -1,4 +1,4 @@
-##一、准备工作
+## 一、准备工作
 
 ```js
 // 准备工作
@@ -9,9 +9,9 @@ babel-standalone
 npm i -S react react-dom babel-standalone
 ```
 
-##二、基本语法
+## 二、基本语法
 
-###0. babel的手动和自动编译
+### 0. babel的手动和自动编译
 
 ```js
 es6的代码转换es5
@@ -25,8 +25,6 @@ Babel.transform(es6代码，{presets:['es2015']}).code;
 // 设置type = babel就会自动解析编译
 ```
 
-
-
 ```js
 // 引入那三个js  babel react  reactDOM
 <script src="../node_modules/babel-standalone/babel.js"></script>
@@ -34,7 +32,7 @@ Babel.transform(es6代码，{presets:['es2015']}).code;
 <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
 ```
 
-###1. jsx
+### 1. jsx
 
 ```jsx
 html或xml 直接写在js中，不要加引号，这是jsx语法
@@ -55,15 +53,13 @@ html或xml 直接写在js中，不要加引号，这是jsx语法
     根据数据 生成DOM节点
 ```
 
-
-
 ### 2.注释
 
 里面用到了JSX的语法，用js写XML就是jsX
 
 ```jsx
 const element = (
-	<div>
+    <div>
         {
             只要进入了标签结构，除了在{}之中，就不能写js代码了
             以下三种注释都不成立   
@@ -101,11 +97,9 @@ ReactDOM.render(
 element 的内容还可以是一个函数的返回值
 ```
 
-
-
 ### 3.插值
 
-​	可以用三元表达式 函数返回值 插值 立即执行函数返回
+​    可以用三元表达式 函数返回值 插值 立即执行函数返回
 
 ```jsx
 const person = {
@@ -122,19 +116,19 @@ function getSex() {
     }
 }
 const element = (
-	<div> 
+    <div> 
         { /*只要进入了标签结构中的{}之内就是写js代码的地方 */  }
-        
+
         // 直接插入
         <p>{person.name}</p>
-        
+
         // jsx里面不能用if else判断 用三元表达式
         <h1>性别 {person.sex?'女':'男'}</h1>  
-        
+
         <h1>
             性别：{getSex()}  // 可以是一个函数的返回值
         </h1>
-        
+
         // 可以是一个函数的自执行
         <h1>
             {
@@ -147,18 +141,16 @@ const element = (
                 })()
             }
         </h1>
-        
+
     </div>
 )
 ```
-
-
 
 ### 4.节点属性绑定
 
 ```jsx
 const element = (
-	<div>
+    <div>
         // class -> className
         // 单标签一定要闭合
         // value -> defaultValue
@@ -169,13 +161,11 @@ const element = (
         <input type="radio" defaultChecked />
         // 样式
         <div>
-        	<h1 style={{color: 'red'}}>头部组件</h1>
-      	</div>
+            <h1 style={{color: 'red'}}>头部组件</h1>
+          </div>
     </div>
 )
 ```
-
-
 
 ### 5.列表渲染
 
@@ -225,8 +215,6 @@ const element3 = (
 // 用map方法 每一个遍历 map会自动返回出去一个数组会去循环遍历输出
 ```
 
-
-
 ### 6.事件处理
 
 ```jsx
@@ -259,21 +247,19 @@ function handleClick(e) {
 在这里e 是一个合成事件。React 根据 W3C spec 来定义这些合成事件，所以你不需要担心跨浏览器的兼容性问题。查看 SyntheticEvent 参考指南来了解更多
 ```
 
-
-
 ### 7.无状态的组件
 
-​	只是普通的变量 是没有状态的 组件才有状态或无状态
+​    只是普通的变量 是没有状态的 组件才有状态或无状态
 
-​	react 是单向数据流
+​    react 是单向数据流
 
-​	状态其实就是让数据驱动视图的响应式数据
+​    状态其实就是让数据驱动视图的响应式数据
 
 ```js
 let a = '这里的是div';
 const element = (
     <div>
-    	{a}
+        {a}
     </div>
 );
 ReactDOM.render(
@@ -285,8 +271,6 @@ setTimeout(function () {
     a = '改变了值了吗';
 },1000);
 ```
-
-
 
 ### 8.函数式声明
 
@@ -310,8 +294,6 @@ const element = (
     </div>
 );
 ```
-
-
 
 **函数式声明**
 
@@ -348,9 +330,9 @@ class MainCon extends React.Component {
             name: '狗蛋'
         };
         setTimeout(() => {
-            
+
   /*********只有这种方式改变的数据才回去响应视图******/
-            
+
             this.setState({
                 name: '狗蛋2'
             })
@@ -375,13 +357,11 @@ const element1 = (
 );
 ```
 
+### 9.从外部引入class模块
 
+​    class关键字构建类
 
-###9.从外部引入class模块
-
-​	class关键字构建类
-
-​	class继承父类
+​    class继承父类
 
 ```jsx
 window.MyComponent = class MyComponent extends React.Component {
@@ -402,19 +382,17 @@ window.MyComponent = class MyComponent extends React.Component {
 <script type="text/babel" src="./component.jsx"></script>
 <script type="text/babel">
     ReactDOM.render(
-    	<MyComponent />,
-    	document.querySelector('#app')
+        <MyComponent />,
+        document.querySelector('#app')
     );
 </script>
 ```
 
-
-
 ### 10.this以及事件对象
 
-​	事件调用
+​    事件调用
 
-​	this指向问题
+​    this指向问题
 
 ```jsx
 class MyComponent extends React.Component {
@@ -448,9 +426,9 @@ class MyComponent extends React.Component {
 
     // 方法3 这种方式不需要改变了额就
     btn = () => {
-        
+
     }
-    
+
     render () {
         return (
             <div>
@@ -458,7 +436,7 @@ class MyComponent extends React.Component {
                 <input type="button" defaultValue="事件一" onClick={this.fn1} />
                 {/* 方法2 */}
                 <input type="button" defaultValue="事件二" onClick={this.fn1.bind(this,1, 2)} />
-                
+
                 <input type="button" defaultValue="事件三" onClick={(e)=>{this.fn1(e,1,2)}} />
             </div>
         )
@@ -479,8 +457,6 @@ ReactDOM.render(
 这里值得注意的一点是，这里是js的语法
 在函数的最后一个没有匹配的参数是  e
 ```
-
-
 
 ### 11. 操作dom元素
 
@@ -513,7 +489,6 @@ class Element extends React.Component {
 
     // 2. 通过js获取 DOM
     let ele = document.querySelector('.wrapper');
-
 
     // 下面2中是通过react操作DOM
     // 对比上面哪个好  当然是react好
@@ -548,7 +523,6 @@ class Element extends React.Component {
    */
 
   render(){
-
     return (
       <div className='wrapper' >
 
@@ -567,7 +541,7 @@ class Element extends React.Component {
               // 传入一个组件
 
               console.log(ReactDOM.findDOMNode(this._list));
-              console.log( ReactDOM.findDOMNode(this._list) === this._list ); // false因为一个是组件 一个是dom元素
+              console.log(ReactDOM.findDOMNode(this._list) === this._list ); // false因为一个是组件 一个是dom元素
               // 传入一个元素
               console.log( ReactDOM.findDOMNode(this._aaa) === this._aaa ); // true
             }}
@@ -584,9 +558,7 @@ ReactDOM.render(
 );
 ```
 
-
-
-###12. 父子组件之间传值
+### 12. 父子组件之间传值
 
 ```jsx
 思想
@@ -601,12 +573,12 @@ class Item extends React.Component {
       sub: this.props.data
     }
   }
-    
+
   componentWillReceiveProps(nextProps) {
     console.log('执行了吗');
     console.log(nextProps);
   }
-    
+
   render() {
     console.log('子组件打印this');
     console.log(this);
@@ -635,7 +607,6 @@ class Main extends React.Component {
   constructor() {
     super();
     this.superFn = this.superFn.bind(this);
-
   }
   state = {
     data: {
@@ -653,7 +624,7 @@ class Main extends React.Component {
 
     this.setState({
       data: data
-    })
+    });
   }
   render() {
     return (
@@ -671,10 +642,6 @@ ReactDOM.render(
   document.getElementById('app')
 )
 ```
-
-
-
-
 
 ### 13.浏览器支持import
 
@@ -695,23 +662,21 @@ const b = 2;
 export default {a, b};
 ```
 
-
-
 ## 三、生命周期
 
 **还是去官网去看那一张图片清晰明了**
 
 什么是生命周期
 
-​	一个组件从创建到销毁的过程
+​    一个组件从创建到销毁的过程
 
-​	当组件实例被创建插入到DOM中，需要调用的函数，就是生命周期函数。
+​    当组件实例被创建插入到DOM中，需要调用的函数，就是生命周期函数。
 
-​	也就是说 组件加载完成前后、组件更新状态、组件销毁、所触发的一系列的方法
+​    也就是说 组件加载完成前后、组件更新状态、组件销毁、所触发的一系列的方法
 
 ### 1.Mounting初始化(挂载)阶段
 
-​	组件创建到首次渲染到页面
+​    组件创建到首次渲染到页面
 
 ```jsx
 constructor(){} 构造函数，在创建组件的时候调用一次
@@ -723,7 +688,7 @@ componentWillMount(){} 在组件即将被挂载的时候调用一次
     // this.setState() this.state this.props 都是异步的！
 render() 渲染
 componentDidMount() 在组件被挂载完成的时候调用一次 可以在这里使用refs
-	组件已经被渲染出来了
+    组件已经被渲染出来了
 ```
 
 **#####注意点####**#
@@ -745,13 +710,13 @@ componentDidMount() 在组件被挂载完成的时候调用一次 可以在这�
 
 ### 2. 更新阶段
 
-​	状态更新引起的变化
+​    状态更新引起的变化
 
 ```jsx
 componentWillReceiveProps(nextProps)  父组件的更新会触发子组件的这个函数
-	nextProps 父组件更新的时候带来的数据
+    nextProps 父组件更新的时候带来的数据
 shouldComponentUpdate(nextProps, nextState)  // 下面的这些会在this.setState()之后顺序触发
-	是否需要重新渲染
+    是否需要重新渲染
     return false/true
 componentWillUpdate(nextProps, nextState) 即将更新
 render() 渲染
@@ -764,8 +729,8 @@ shouldComponentUpdate
 
 ```js
 this.setState({
-	adasdafd: nextProps.title
-})
+    adasdafd: nextProps.title
+});
 在这里更改数据的话 会重复的再去触发一次渲染的那些东西，因为这个东西是一个异步的
 小问题2
 //就是那个哪里 父组件传给子组件的值之后，子组件是用this.props调用的，但是父组件改变之后，那个render里面的this.props会不会是改变之后的值  是
@@ -773,9 +738,9 @@ this.setState({
 
 ### 3. 销毁阶段
 
-​	组件在销毁之前
+​    组件在销毁之前
 
-```  js
+```js
 componentWillUnmount() 即将销毁  注意 这里的销毁是销毁自己，并不是销毁子组件
 ```
 
